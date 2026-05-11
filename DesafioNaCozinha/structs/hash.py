@@ -23,7 +23,7 @@ class HashTable:
                 return
         
         bucket.append([ingrediente, [receita]])
-    #função para buscar ingrediente em receita
+    #função para buscar receitas com tal ingrediente
     def buscar(self, ingrediente):
         indice = self.hash(ingrediente)
         bucket = self.tabela[indice]
