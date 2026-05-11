@@ -4,6 +4,7 @@ import os
 
 #imports das classes
 from models.receita import Receita
+from models.recomendacao import recomendarReceitas
 from structs.hash import HashTable
 from structs.trie import Trie
 
@@ -47,4 +48,3 @@ with open("DesafioNaCozinha/data/receita.json", "r", encoding="utf-8") as doc:
 
 tabelaIngredientes = HashTable()
 adicionarIngredientes(tabelaIngredientes, receitas)
-
