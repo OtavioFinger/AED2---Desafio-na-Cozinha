@@ -4,10 +4,10 @@
 ### Por Arthur Trettin Bast e Otávio Finger
 
 Cada receita deverá ter:
-nome
-categoria
-ingredientes
-ou (tempo de preparo, custo, avaliação ou popularidade).
+- nome
+- categoria
+- ingredientes
+- ou (tempo de preparo, custo, avaliação ou popularidade).
 
 *MÓDULOS DE SISTEMA:*
 
