@@ -26,7 +26,7 @@ def adicionarIngredientes(tabela, receitas):
 
 
 # pega e le o arquivo json
-with open("data/receita.json", "r", encoding="utf-8") as doc:
+with open("DesafioNaCozinha/data/receita.json", "r", encoding="utf-8") as doc:
 
     dados = json.load(doc)
 
