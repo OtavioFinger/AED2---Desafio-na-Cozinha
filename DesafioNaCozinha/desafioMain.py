@@ -7,6 +7,7 @@ from models.receita import Receita
 from models.recomendacao import recomendarReceitas
 from structs.hash import HashTable
 from structs.trie import Trie
+from structs.arvoreB import ArvoreB
 
 os.system('cls')
 
@@ -53,6 +54,9 @@ trie = Trie()
 for receita in receitas:
     trie.inserir(receita.nome.lower())
 
+arvore = ArvoreB()
+for receita in receitas:
+    arvore.inserir(receita)
 
 while True:
     print("=======Bem vindo=======")
@@ -106,6 +110,23 @@ while True:
                 print(f"-{r.avaliacao}")
                 print()
     
+    elif opcao == "4":
+
+        duplicatas, alteradas = arvore.modoInvestigacao(receitas)
+
+        if len(duplicatas) == 0 and len(alteradas) == 0:
+            print("Nenhuma receita recebeu alteração!")
+
+        if len(duplicatas) > 0:
+            print("\n--Receitas duplicadas--")
+            for r in duplicatas:
+                print(f"-{r.nome} (id: {r.id})")
+
+        if len(alteradas) > 0:
+            print("\n--Receitas alteradas--")
+            for r in alteradas:
+                print(f"-{r.nome} (id: {r.id})")
+
     elif opcao == "5":
         print("Obrigado por usar esse sistema!")
         break
