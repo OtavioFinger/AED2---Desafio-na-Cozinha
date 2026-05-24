@@ -5,6 +5,9 @@
 
 # Instruções de Compilação e Execução
 
+    Primeiro, 
+
+# DesafioNaCozinha
 
 ## Fonte dos Dados: data
 
@@ -31,3 +34,10 @@ Abaixo está um exemplo de uma receita:
         "popularidade": 210
     },
 ```
+## models
+
+## structs
+
+# desafioMain.py
+
+# tempCodeRunnerFile.py

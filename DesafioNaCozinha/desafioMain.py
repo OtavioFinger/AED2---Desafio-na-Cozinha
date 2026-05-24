@@ -60,7 +60,7 @@ while True:
     print("1- Buscar receita por ingrediente")
     print("2- Buscar receita por nome")
     print("3- Recomendar receita")
-    print("4- Modo investigação")
+    print("4- Modo Investigação")
     print("5- Sair")
 
     opcao = input("Escolha uma opção: ").lower()

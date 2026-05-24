@@ -9,3 +9,20 @@
 # arquivo binário  sem precisar reconstruir a árvore na RAM do zero por inserções repetidas.
 #     Exigência na Apresentação: Inicializar o sistema com a RAM limpa, abrir o arquivo binário gerado 
 # previamente e realizar uma busca com sucesso, provando o isolamento e leitura dos blocos de dados.
+
+
+
+class NodoB: # Estrutura do nodo da Árvore B
+ 
+    def __init__(self):
+        self.chaves = []
+        self.filhos = []
+ 
+    def ehFolha(self):
+        return len(self.filhos) == 0
+
+# Instância da Árvore B em si
+class ArvoreB:
+ 
+     def __init__(self):
+        self.raiz = NodoB()
