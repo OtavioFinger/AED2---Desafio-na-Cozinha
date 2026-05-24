@@ -31,12 +31,28 @@
 
     As especicações do código de cada um dos módulos será descrito nos seus respectivos tópicos.
 
+
+    AED2 - Desafio na Cozinha/
+    │
+    ├── README.md
+    ├── DesafioNaCozinha/
+    │ ├── desafioMain.py
+    │ ├── data/
+    │ │ └── receita.json
+    │ ├── models/
+    │ │ ├── receita.py
+    │ │ └── recomendacao.py
+    │ └── structs/
+    │ ├── hash.py
+    │ ├── trie.py
+    │ └── arvoreB.py
+
 # Instruções de Compilação e Execução
 
     Primeiro, é preciso realizar um checklist com relação á:
 
     1. Python 3.6+ instalado no sistema operacional?
-    2. Tenho baixo o arquivo *AED2 - Desafio na Cozinha*?
+    2. Tenho baixado o arquivo *AED2 - Desafio na Cozinha*?
 
     **Obs: A pasta principal que abre o menu proposto pela atividade é "DesafioNaCozinha", que está dentro de "AED2 - Desafio na Cozinha".**
 
@@ -57,12 +73,34 @@
     5- Sair
     Escolha uma opção: 
 
+# Estruturação e Função dos Arquivos
+
+Nesta seção, cada arquivo principal do projeto será explicado individualmente, detalhando sua responsabilidade, funcionamento interno, principais funções e relação com o restante do sistema.
+
 ## Fonte dos Dados: data
 
 Dentro da pasta  fonte de dados é um arquivo .JSON denominado *receita.json* que contém os dados de 50 receitas (instruções de reparo). 
+
+Essa pasta está localizada em: 
+```
+DesafioNaCozinha/data/receita.json
+```
+
+Cada receita possui os seguintes campos:
+- id
+- nome
+- categoria
+- ingredientes
+- tempo
+- custo
+- dificuldade
+- avaliacao
+- popularidade
+
 Abaixo está um exemplo de uma receita:
 
-```{
+```
+{
         "id": 1,
         "nome": "Flan",
         "categoria": "Dessert",
@@ -82,10 +120,31 @@ Abaixo está um exemplo de uma receita:
         "popularidade": 210
     },
 ```
-## models
 
-## structs
+# models/receita.py
 
-# desafioMain.py
+    Esse arquivo serve para definir a classe da receita, a entidade principal do sistema. A classe criada como Receita somente possui seus atributos, sem métodos. 
 
-# tempCodeRunnerFile.py
+    ```
+    class Receita:
+    def __init__(self, id, nome, categoria, ingredientes, tempo, custo, dificuldade, avaliacao, popularidade):
+        self.id = id
+        self.nome = nome
+        self.categoria = categoria
+        self.ingredientes = ingredientes
+        self.tempo = tempo
+        self.custo = custo
+        self.dificuldade = dificuldade
+        self.avaliacao = avaliacao
+        self.popularidade = popularidade
+    ```  
+
+    Ela é compartilhada com *recomendacao.py* e os arquivos das outras estruturas de dados que veremos  a seguir.
+
+## models/recomendacao.py
+
+    A função é ser um "Modo de Recomendação", responsável por sugerir receitas com base em critérios de melhor custo-benefício. O algoritmo faz isso utilizando conceitos de Algoritmos Gulosos.
+
+    *Obs: Sendo uma implementação de um algoritmo guloso para recomendar receitas, ele não garante a solução perfeita global.
+
+# 
