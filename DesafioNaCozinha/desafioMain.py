@@ -55,8 +55,6 @@ for receita in receitas:
     trie.inserir(receita.nome.lower())
 
 arvore = ArvoreB()
-for receita in receitas:
-    arvore.inserir(receita)
 
 # Se o arquivo .dat já existe, carrega do disco
 # Se não, insere todas as receitas e salva
@@ -67,7 +65,6 @@ else:
         arvore.inserir(receita)
     arvore.salvarEmDisco("DesafioNaCozinha/data/arvore.dat")
     print("Árvore criada e salva em disco!")
-
 
 while True:
     print("=======Bem vindo=======")
