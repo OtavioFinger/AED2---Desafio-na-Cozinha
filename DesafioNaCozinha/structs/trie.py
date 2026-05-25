@@ -48,4 +48,4 @@ class Trie:
         for letter in nodo.children:
             self.autocomplete(nodo.children[letter], prefixo + letter, palavras)
         
-        
+# Essa estrutura de dados foi escolhida pois apresenta um ótimo desempenho em busca por prefixo e auto-complete, sendo O(k) o tempo para essas tarefas(sendo k o tamanho do prefixo)

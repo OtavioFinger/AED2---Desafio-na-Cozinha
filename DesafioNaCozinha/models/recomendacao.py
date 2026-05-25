@@ -11,3 +11,5 @@ def recomendarReceitas(receitas, orçamento):
             custoTotal += receita.custo
     
     return receitasEscolhidas  
+
+# O algoritmo guloso foi escolhido para solucionar o problema das recomendações, usando ele para definir o melhor custo benefício entre receitas, tendo seu custo como O(n Logn)

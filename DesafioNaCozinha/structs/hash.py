@@ -34,4 +34,4 @@ class HashTable:
 
         return []
 
-        
+#Essa essa estrutura de dados foi escolhida para ser usada na busca por ingredientes devido seu alto desempenho, sendo O(1) na maioria dos casos.
