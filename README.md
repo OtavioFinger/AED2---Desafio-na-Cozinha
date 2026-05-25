@@ -1,92 +1,122 @@
 # T1 - Desafio na Cozinha
 
-### Link do repositório: https://github.com/OtavioFinger/AED2---Desafio-na-Cozinha
+### Link do repositório
+https://github.com/OtavioFinger/AED2---Desafio-na-Cozinha
+
 ### Por Arthur Trettin Bast e Otávio Finger
+
+---
 
 # Introdução
 
-    O projeto atual visa explorar todos os conceitos vistos nas aulas de Algoritmos e Estruturas de Dados II, ministrada pela Professora Brenda Salenave Santana.
-    
-    O objetivo do mesmo é implementar um sistema que use diferentes estruturas de dados como Tries, Tabelas Hash, Árvores B, bem como as versões variadas de cada uma das estruturas citadas. Além disso, deverá ser implementando alguma forma de Algoritmo Guloso em recomendação, busca ou otimização.
+O projeto atual visa explorar todos os os conceitos vistos nas aulas de Algoritmos e Estruturas de Dados II, ministrada pela Professora Brenda Salenave Santana.
 
-    Nesse sistema fictício de um restaurante/cozinha, será possível pelo usuário acessar os modos:
+O objetivo do mesmo é implementar um sistema que use diferentes estruturas de dados como Tries, Tabelas Hash, Árvores B, bem como as versões variadas de cada uma das estruturas citadas. Além disso, deverá ser implementada alguma forma de Algoritmo Guloso em recomendação, busca ou otimização.
 
-    1- Buscar receita por ingrediente
-    2- Buscar receita por nome
-    3- Recomendar receita
-    4- Modo Investigação
-    5- Sair
+Nesse sistema fictício de um restaurante/cozinha, será possível ao usuário acessar os modos:
 
-    Os modos tem por objetivo guiar o usuário (cozinheiro, auxiliar e etc) pelo menu do restaurante, sendo capaz de realizar ações como:
+1. Buscar receita por ingrediente  
+2. Buscar receita por nome  
+3. Recomendar receita  
+4. Modo Investigação  
+5. Sair  
 
-    1- Buscar receita por ingrediente: Utiliza inteiramente os conceitos de Tabelas Hash para buscar pratos que contenham determinado ingrediente na língua inglesa, retornando todas as receitas que contenham o determiando ingrediente.
+Os modos têm por objetivo guiar o usuário (cozinheiro, auxiliar etc.) pelo menu do restaurante, sendo capaz de realizar ações como:
 
-    2- Buscar receita por nome: Utiliza conceitos de Árvores Trie para buscar receitas por prefixos ou por seus nomes completos, devolvendo uma impressão com os mesmos.
+---
 
-    3- Recomendar receita:
+## 1. Buscar receita por ingrediente
 
-    4- Modo Investigação: Utiliza inteiramente conceitos de Árvore B, armazenando as receitas em RAM e buscando-as. Por ele, é possível buscar e verificar duplicadas de receitas a partir de seu ID
+Utiliza inteiramente os conceitos de Tabelas Hash para buscar pratos que contenham determinado ingrediente na língua inglesa, retornando todas as receitas que contenham o determinado ingrediente.
 
-    5- Sair: Encerra o sistema, sendo preciso executar novamente o arquivo main para reacessar o menu.
+---
 
-    As especicações do código de cada um dos módulos será descrito nos seus respectivos tópicos.
+## 2. Buscar receita por nome
+
+Utiliza conceitos de Árvores Trie para buscar receitas por prefixos ou por seus nomes completos, devolvendo uma impressão com os mesmos.
+
+---
+
+## 3. Recomendar receita
+
+---
+
+## 4. Modo Investigação
+
+Utiliza inteiramente conceitos de Árvore B, armazenando as receitas em RAM e buscando-as. Por ele, é possível buscar e verificar duplicatas de receitas a partir de seu ID.
+
+---
+
+## 5. Sair
+
+Encerra o sistema, sendo preciso executar novamente o arquivo `main` para reacessar o menu.
+
+---
+
+As especificações do código de cada um dos módulos serão descritas nos seus respectivos tópicos.
 
 # Instruções de Compilação e Execução
 
-    Primeiro, é preciso realizar um checklist com relação á:
+Primeiro, é preciso realizar um checklist com relação a:
 
-    1. Python 3.6+ instalado no sistema operacional?
-    2. Tenho baixado o arquivo *AED2 - Desafio na Cozinha*?
+1. Python 3.6+ instalado no sistema operacional?
+2. Tenho baixado o arquivo **AED2 - Desafio na Cozinha**?
 
-    **Obs: A pasta principal que abre o menu proposto pela atividade é "DesafioNaCozinha", que está dentro de "AED2 - Desafio na Cozinha".**
+> **Obs.:** A pasta principal que abre o menu proposto pela atividade é `DesafioNaCozinha`, que está dentro de `AED2 - Desafio na Cozinha`.
 
-    Com isso, o comando usado, após descompactar a pasta *AED2 - Desafio na Cozinha* é:
+Com isso, o comando usado, após descompactar a pasta **AED2 - Desafio na Cozinha**, é:
 
-    ```
-    cd DesafioNaCozinha && python desafioMain.py
-    ```
+```bash
+cd DesafioNaCozinha && python desafioMain.py
+```
 
-    Com isso, o arquivo principal que contém o menu, o "desafioMain,py" será aberto:
+Com isso, o arquivo principal que contém o menu, o `desafioMain.py`, será aberto:
 
-        =======Bem vindo=======
-    --Menu--
-    1- Buscar receita por ingrediente
-    2- Buscar receita por nome
-    3- Recomendar receita
-    4- Modo Investigação
-    5- Sair
-    Escolha uma opção: 
+```text
+=======Bem vindo=======
+--Menu--
+1- Buscar receita por ingrediente
+2- Buscar receita por nome
+3- Recomendar receita
+4- Modo Investigação
+5- Sair
+Escolha uma opção:
+```
 
 # Estruturação e Função dos Arquivos
 
 Nesta seção, cada arquivo principal do projeto será explicado individualmente, detalhando sua responsabilidade, funcionamento interno, principais funções e relação com o restante do sistema.
 
-    AED2 - Desafio na Cozinha/
-    │
-    ├── README.md
-    ├── DesafioNaCozinha/
-    │ ├── desafioMain.py
-    │ ├── testarDisco.py
-    │ ├── data/
-    │ │ └── receita.json
-    │ ├── models/
-    │ │ ├── receita.py
-    │ │ └── recomendacao.py
-    │ └── structs/
-    │ ├── hash.py
-    │ ├── trie.py
-    │ └── arvoreB.py
-
-## Fonte dos Dados: data
-
-Dentro da pasta  fonte de dados é um arquivo .JSON denominado *receita.json* que contém os dados de 50 receitas (instruções de reparo). 
-
-Essa pasta está localizada em: 
+```text
+AED2 - Desafio na Cozinha/
+│
+├── README.md
+├── DesafioNaCozinha/
+│   ├── desafioMain.py
+│   ├── testarDisco.py
+│   ├── data/
+│   │   └── receita.json
+│   ├── models/
+│   │   ├── receita.py
+│   │   └── recomendacao.py
+│   └── structs/
+│       ├── hash.py
+│       ├── trie.py
+│       └── arvoreB.py
 ```
+
+# Fonte dos Dados: data
+
+Dentro da pasta fonte de dados há um arquivo `.json` denominado `receita.json`, que contém os dados de 50 receitas (instruções de preparo).
+
+Essa pasta está localizada em:
+
+```text
 DesafioNaCozinha/data/receita.json
 ```
 
 Cada receita possui os seguintes campos:
+
 - id
 - nome
 - categoria
@@ -99,34 +129,34 @@ Cada receita possui os seguintes campos:
 
 Abaixo está um exemplo de uma receita:
 
-```
+```json
 {
-        "id": 1,
-        "nome": "Flan",
-        "categoria": "Dessert",
-        "ingredientes": [
-            "Sugar",
-            "Milk",
-            "Sugar",
-            "vanilla pod",
-            "Egg Yolks",
-            "Egg",
-            "Dulce de leche"
-        ],
-        "tempo": 41,
-        "custo": 26.54,
-        "dificuldade": "Média",
-        "avaliacao": 4.0,
-        "popularidade": 210
-    },
+    "id": 1,
+    "nome": "Flan",
+    "categoria": "Dessert",
+    "ingredientes": [
+        "Sugar",
+        "Milk",
+        "Sugar",
+        "vanilla pod",
+        "Egg Yolks",
+        "Egg",
+        "Dulce de leche"
+    ],
+    "tempo": 41,
+    "custo": 26.54,
+    "dificuldade": "Média",
+    "avaliacao": 4.0,
+    "popularidade": 210
+}
 ```
 
-## models/receita.py
+# models/receita.py
 
-    Esse arquivo serve para definir a classe da receita, a entidade principal do sistema. A classe criada como Receita somente possui seus atributos, sem métodos. 
+Esse arquivo serve para definir a classe da receita, a entidade principal do sistema. A classe criada como `Receita` somente possui seus atributos, sem métodos.
 
-    ```
-    class Receita:
+```python
+class Receita:
     def __init__(self, id, nome, categoria, ingredientes, tempo, custo, dificuldade, avaliacao, popularidade):
         self.id = id
         self.nome = nome
@@ -137,92 +167,93 @@ Abaixo está um exemplo de uma receita:
         self.dificuldade = dificuldade
         self.avaliacao = avaliacao
         self.popularidade = popularidade
-    ```  
+```
 
-    Ela é compartilhada com *recomendacao.py* e os arquivos das outras estruturas de dados que veremos  a seguir.
+Ela é compartilhada com `recomendacao.py` e os arquivos das outras estruturas de dados que veremos a seguir.
 
-## models/recomendacao.py
+# models/recomendacao.py
 
-    A função é ser um "Modo de Recomendação", responsável por sugerir receitas com base em critérios de melhor custo-benefício. O algoritmo faz isso utilizando conceitos de Algoritmos Gulosos.
+A função é ser um "Modo de Recomendação", responsável por sugerir receitas com base em critérios de melhor custo-benefício. O algoritmo faz isso utilizando conceitos de Algoritmos Gulosos.
 
-    *Obs: Sendo uma implementação de um algoritmo guloso para recomendar receitas, ele não garante a solução perfeita global.
+> **Obs.:** Sendo uma implementação de um algoritmo guloso para recomendar receitas, ele não garante a solução perfeita global.
 
-    Isso ocorre ao perguntar qual o orçamento máximo do usuário, sendo assim, o algoritmo calcula:
+Isso ocorre ao perguntar qual o orçamento máximo do usuário, sendo assim, o algoritmo calcula:
 
-    ```
-    key = lambda receita:(receita.avaliacao/receita.custo)
-    ```
+```python
+key = lambda receita:(receita.avaliacao/receita.custo)
+```
 
-    Recebe a lista completa de receitas e um valor de orçamento máximo definido pelo usuário, e retorna quais receitas devem ser escolhidas para maximizar a qualidade dentro daquele
-orçamento.
+Recebe a lista completa de receitas e um valor de orçamento máximo definido pelo usuário, e retorna quais receitas devem ser escolhidas para maximizar a qualidade dentro daquele orçamento.
 
-## structs/hash.py
+# structs/hash.py
 
-    Este arquivo implementa a Tabela Hash do zero, responsável pelo Módulo 3 — Organização dos
-    Ingredientes. A Tabela Hash permite associar ingredientes às receitas e recuperar essa associação
-de forma muito rápida, independente de quantas receitas estejam cadastradas.
+Este arquivo implementa a Tabela Hash do zero, responsável pelo Módulo 3 — Organização dos Ingredientes.
 
-Cria uma tabela com 103 posições. Cada posição pode guardar vários ingredientes sem
-perder nenhum, mesmo que dois ingredientes diferentes acabem no mesmo índice, o arquivo resolve o problema com tratamento de *Colisão por Encadeamento*.
+A Tabela Hash permite associar ingredientes às receitas e recuperar essa associação de forma muito rápida, independentemente de quantas receitas estejam cadastradas.
 
-### Método: hash(self, chave):
-    O método é quem calcula o índice onde vai aquele ingrediente. 
-    Ele faz isso somando os valores numéricos de cada letra e aplica o resto da divisão por 103. Assim, cada ingrediente sempre vai pro mesmo índice,
+Cria uma tabela com 103 posições. Cada posição pode guardar vários ingredientes sem perder nenhum, mesmo que dois ingredientes diferentes acabem no mesmo índice. O arquivo resolve o problema com tratamento de **Colisão por Encadeamento**.
 
-## Método: inserir(self, ingrediente, receita):
+## Método: `hash(self, chave)`
 
-Essa função serve para *associar um ingrediente com determinada receita dentro da tabela*.
+O método é quem calcula o índice onde vai aquele ingrediente.
 
-Calcula a posição do ingrediente usando hash(). Vai até essa posição na tabela e
-verifica se o ingrediente já existe ali. Se já existir, apenas adiciona a nova receita à lista que já está
-associada a ele. Se não existir, cria uma nova entrada com o ingrediente e uma lista contendo a
-receita. Isso garante que o mesmo ingrediente nunca seja duplicado na tabela e que todas as
-receitas que o usam fiquem agrupadas.
+Ele faz isso somando os valores numéricos de cada letra e aplica o resto da divisão por 103. Assim, cada ingrediente sempre vai para o mesmo índice.
 
-### Método buscar(self, ingrediente):
+## Método: `inserir(self, ingrediente, receita)`
 
-Retorna todas as receitas que contêm um ingrediente específico. *É chamado quando o
-usuário escolhe a opção 1 no menu*.
+Essa função serve para **associar um ingrediente com determinada receita dentro da tabela**.
 
-Calcula a posição do ingrediente com hash(), vai diretamente para aquela posição na
-tabela e procura o ingrediente. Se encontrar, retorna a lista de receitas associadas associadas ao índice daquela receita. Se não encontrar, retorna uma lista vazia. Por ir direto à posição correta sem precisar percorrer toda a tabela, a busca é extremamente rápida.
+Calcula a posição do ingrediente usando `hash()`. Vai até essa posição na tabela e verifica se o ingrediente já existe ali. Se já existir, apenas adiciona a nova receita à lista que já está associada a ele. Se não existir, cria uma nova entrada com o ingrediente e uma lista contendo a receita.
 
-## structs/trie.py
+Isso garante que o mesmo ingrediente nunca seja duplicado na tabela e que todas as receitas que o usam fiquem agrupadas.
 
-Este arquivo implementa a estrutura Trie, responsável pelo *Módulo 2 — Busca Rápida no
-Cardápio.* A Trie é uma árvore onde cada nó representa uma letra, e o caminho percorrido da raiz
-até um nó final forma o nome completo de uma receita. Isso permite encontrar todas as receitas
-que começam com um determinado prefixo de forma muito eficiente.
+## Método: `buscar(self, ingrediente)`
 
-### Método inserir(self, palavra):
+Retorna todas as receitas que contêm um ingrediente específico.
 
-Tem por função inserir Insere o nome de uma receita na Trie letra por letra.
+> **É chamado quando o usuário escolhe a opção 1 no menu.**
 
-Começa na raiz e percorre cada letra do nome. Se a letra ainda não existe como filho do
-nó atual, cria um novo espaço para ela. Ao chegar na última letra, marca aquele nó como final
-para indicar que ali termina um nome de receita completo.
+Calcula a posição do ingrediente com `hash()`, vai diretamente para aquela posição na tabela e procura o ingrediente. Se encontrar, retorna a lista de receitas associadas ao índice daquela receita. Se não encontrar, retorna uma lista vazia.
 
-### Método buscar(self, prefixo):
+Por ir direto à posição correta sem precisar percorrer toda a tabela, a busca é extremamente rápida.
 
-Recebe o texto digitado pelo usuário e retorna todos os nomes de receitas que
-começam com aquele texto. **É chamado quando o usuário escolhe a opção 2 no menu.**
+# structs/trie.py
 
-Navega pela Trie seguindo as letras do prefixo digitado. Se em algum ponto uma letra
-não existe na árvore, retorna lista vazia pois nenhuma receita começa com aquele prefixo. Se
-chegar ao fim do prefixo com sucesso, chama a próxima função, autocomplete() para coletar todos os nomes que
-continuam a partir daquele ponto.
+Este arquivo implementa a estrutura Trie, responsável pelo **Módulo 2 — Busca Rápida no Cardápio**.
 
-### Método autocomplete autocomplete(self, nodo, prefixo, palavras):
+A Trie é uma árvore onde cada nó representa uma letra, e o caminho percorrido da raiz até um nó final forma o nome completo de uma receita. Isso permite encontrar todas as receitas que começam com um determinado prefixo de forma muito eficiente.
 
-Percorre todos os filhos do nó recebido. Sempre que encontra um nó
-com final igual a verdadeiro, adiciona o nome formado até ali na lista de palavras. Dessa forma,
-todos os nomes que começam com o prefixo digitado são coletados automaticamente.
+## Método: `inserir(self, palavra)`
 
-## structs/arvoreB.py
+Tem por função inserir o nome de uma receita na Trie letra por letra.
 
-Este arquivo implementa toda a lógica da Árvore B utilizada no sistema. A estrutura é responsável principalmente pelo **Modo Investigação**, além de também realizar buscas eficientes por ID das receitas.
+Começa na raiz e percorre cada letra do nome. Se a letra ainda não existe como filho do nó atual, cria um novo espaço para ela. Ao chegar na última letra, marca aquele nó como final para indicar que ali termina um nome de receita completo.
 
-A Árvore B foi escolhida por ser uma estrutura de busca balanceada e extremamente eficiente para grandes volumes de dados. Diferente de árvores binárias comuns, cada nó pode armazenar múltiplas chaves e múltiplos filhos, reduzindo a altura da árvore e diminuindo a quantidade de acessos necessários durante buscas.
+## Método: `buscar(self, prefixo)`
+
+Recebe o texto digitado pelo usuário e retorna todos os nomes de receitas que começam com aquele texto.
+
+> **É chamado quando o usuário escolhe a opção 2 no menu.**
+
+Navega pela Trie seguindo as letras do prefixo digitado. Se em algum ponto uma letra não existe na árvore, retorna lista vazia, pois nenhuma receita começa com aquele prefixo.
+
+Se chegar ao fim do prefixo com sucesso, chama a próxima função, `autocomplete()`, para coletar todos os nomes que continuam a partir daquele ponto.
+
+## Método: `autocomplete(self, nodo, prefixo, palavras)`
+
+Percorre todos os filhos do nó recebido.
+
+Sempre que encontra um nó com final igual a verdadeiro, adiciona o nome formado até ali na lista de palavras. Dessa forma, todos os nomes que começam com o prefixo digitado são coletados automaticamente.
+
+# structs/arvoreB.py
+
+Este arquivo implementa toda a lógica da Árvore B utilizada no sistema.
+
+A estrutura é responsável principalmente pelo **Modo Investigação**, além de também realizar buscas eficientes por ID das receitas.
+
+A Árvore B foi escolhida por ser uma estrutura de busca balanceada e extremamente eficiente para grandes volumes de dados.
+
+Diferente de árvores binárias comuns, cada nó pode armazenar múltiplas chaves e múltiplos filhos, reduzindo a altura da árvore e diminuindo a quantidade de acessos necessários durante buscas.
 
 Nesta implementação, cada nó pode armazenar até 3 chaves e possuir até 4 filhos.
 
@@ -234,7 +265,7 @@ A estrutura foi modificada para simular o funcionamento de sistemas reais de ban
 
 ---
 
-### Classe NodoB
+## Classe `NodoB`
 
 A classe `NodoB` representa cada nó da Árvore B.
 
@@ -245,7 +276,9 @@ Cada nodo possui:
 3. `chaves`
 4. `filhos`
 
-O atributo `idBloco` funciona como um identificador único do bloco no disco. Esse identificador é utilizado para localizar os nós durante as buscas realizadas diretamente no arquivo binário.
+O atributo `idBloco` funciona como um identificador único do bloco no disco.
+
+Esse identificador é utilizado para localizar os nós durante as buscas realizadas diretamente no arquivo binário.
 
 O atributo `folha` indica se aquele nodo é um nó folha ou interno.
 
@@ -257,7 +290,7 @@ A variável estática `contadorIds` é utilizada para gerar IDs únicos automati
 
 ---
 
-### Método inserir()
+## Método `inserir()`
 
 O método `inserir()` é responsável por adicionar novas receitas na Árvore B.
 
@@ -276,7 +309,7 @@ Essa divisão mantém a Árvore B balanceada durante toda a execução.
 
 ---
 
-### Método inserirNaoCheio()
+## Método `inserirNaoCheio()`
 
 Este método realiza a inserção propriamente dita em nós que ainda possuem espaço disponível.
 
@@ -290,7 +323,7 @@ Esse processo garante que a árvore continue balanceada mesmo após múltiplas i
 
 ---
 
-### Método dividirFilho()
+## Método `dividirFilho()`
 
 O método `dividirFilho()` implementa o processo de divisão de nós da Árvore B.
 
@@ -302,7 +335,7 @@ Esse mecanismo é o principal responsável pelo balanceamento automático da Ár
 
 ---
 
-### Método buscarMemoria()
+## Método `buscarMemoria()`
 
 O método `buscarMemoria()` realiza buscas tradicionais diretamente na estrutura carregada na RAM.
 
@@ -312,7 +345,7 @@ Esse método é utilizado principalmente durante inserções e no Modo Investiga
 
 ---
 
-### Persistência em Disco
+## Persistência em Disco
 
 A principal modificação realizada na recuperação foi a implementação da persistência em memória secundária.
 
@@ -337,7 +370,7 @@ Esses dados são serializados individualmente no arquivo `.dat`.
 
 ---
 
-### Método salvarNodo()
+## Método `salvarNodo()`
 
 O método `salvarNodo()` salva cada bloco da árvore individualmente no arquivo binário.
 
@@ -349,7 +382,7 @@ Após salvar o bloco atual, o método continua recursivamente salvando todos os 
 
 ---
 
-### Método salvarEmDisco()
+## Método `salvarEmDisco()`
 
 O método `salvarEmDisco()` é responsável por persistir toda a estrutura da Árvore B no arquivo `.dat`.
 
@@ -359,7 +392,7 @@ Essas informações permitem reconstruir a navegação da árvore posteriormente
 
 ---
 
-### Método carregarBlocos()
+## Método `carregarBlocos()`
 
 Este método lê o arquivo binário e reconstrói os blocos armazenados.
 
@@ -371,7 +404,7 @@ Cada bloco é indexado pelo seu `idBloco`, permitindo acesso rápido durante as 
 
 ---
 
-### Método carregarDoDisco()
+## Método `carregarDoDisco()`
 
 O método `carregarDoDisco()` realiza a recuperação da árvore diretamente do arquivo binário.
 
@@ -383,7 +416,7 @@ Esse método permite inicializar o sistema sem reconstruir toda a árvore na RAM
 
 ---
 
-### Método carregarNodo()
+## Método `carregarNodo()`
 
 O método `carregarNodo()` reconstrói um nodo específico a partir dos dados persistidos.
 
@@ -393,7 +426,7 @@ Esse comportamento simula operações reais de leitura de páginas de disco.
 
 ---
 
-### Método buscar()
+## Método `buscar()`
 
 O método `buscar()` inicia o processo de busca diretamente no disco.
 
@@ -401,16 +434,16 @@ A busca começa a partir do bloco raiz carregado nos metadados da árvore.
 
 ---
 
-### Método buscarDisco()
+## Método `buscarDisco()`
 
 O método `buscarDisco()` implementa a navegação da Árvore B utilizando os blocos persistidos.
 
 A cada etapa da busca:
 
-1. um bloco é carregado;
-2. as chaves são verificadas;
-3. o próximo filho é determinado;
-4. um novo bloco é acessado.
+1. Um bloco é carregado;
+2. As chaves são verificadas;
+3. O próximo filho é determinado;
+4. Um novo bloco é acessado.
 
 Durante a execução, mensagens como:
 
@@ -424,7 +457,7 @@ Esse processo representa o funcionamento de Árvores B utilizadas em bancos de d
 
 ---
 
-### Método modoInvestigacao()
+## Método `modoInvestigacao()`
 
 O método `modoInvestigacao()` é utilizado para verificar inconsistências nas receitas carregadas no sistema.
 
@@ -439,64 +472,89 @@ A comparação é feita utilizando o método `resumoReceita()`, que gera uma rep
 
 Caso existam diferenças entre os dados atuais e os dados armazenados originalmente, a receita é marcada como alterada.
 
-## desafioMain.py
+# desafioMain.py
 
-Este é o arquivo principal do sistema. Ele une todos os outros módulos, carrega os dados, inicializa
-as estruturas e exibe o menu de interação para o usuário. **É o único arquivo que precisa ser
-executado para rodar o sistema.**
+Este é o arquivo principal do sistema.
 
-### Bloco de carregamento do JSON
+Ele une todos os módulos, carrega os dados, inicializa as estruturas e exibe o menu de interação para o usuário.
 
-Lê o arquivo receita.json e transforma cada entrada em um objeto Receita, populando a
-lista receitas que é o repositório central do sistema.
+> **É o único arquivo que precisa ser executado para rodar o sistema.**
 
-### Bloco de Inicialização de Estruturas
+Além disso, esse arquivo também é responsável por inicializar a persistência da Árvore B em disco.
 
-Esse bloco tem por objetivo ler o arquivo receita.json e transformar cada entrada em u objeto Receita de uma lista, que depois será utilizado por:
+Durante a execução, o sistema verifica se já existe um arquivo `.dat` salvo anteriormente. Caso exista, a árvore é carregada diretamente do disco. Caso contrário, a estrutura é criada na RAM, populada com as receitas e posteriormente persistida em memória secundária.
 
-[] Hash: Criada vazia e populada chamando adicionarIngredientes() com a lista receitas.
+## Bloco de carregamento do JSON
 
-[] Trie: Criada vazia e populada com um laço que chama trie.inserir() para cada nome de receita.
+Lê o arquivo `receita.json` e transforma cada entrada em um objeto `Receita`, populando a lista `receitas`, que é o repositório central do sistema.
 
-[] Árvore B: Criada vazia e populada com um laço que chama arvore.inserir() para cada receita.
+## Bloco de Inicialização de Estruturas
 
-### Opção 1: Buscar por Ingrediente
+Esse bloco tem por objetivo ler o arquivo `receita.json` e transformar cada entrada em um objeto `Receita` de uma lista, que depois será utilizado por:
 
-Converte o texto digitado para minúsculas e chama tabelaIngredientes.buscar(). Se a
-lista retornada estiver vazia, exibe mensagem de não encontrado. Caso contrário, exibe os nomes
-de cada receita retornada, que estava na lista associada por aquele ingrediente na Hash.
+- **Hash:** Criada vazia e populada chamando `adicionarIngredientes()` com a lista `receitas`.
+- **Trie:** Criada vazia e populada com um laço que chama `trie.inserir()` para cada nome de receita.
+- **Árvore B:** Inicialmente tenta carregar a estrutura persistida do arquivo `arvore.dat`. Caso o arquivo ainda não exista, a árvore é criada normalmente, preenchida com as receitas e salva no disco utilizando persistência binária.
 
-### Opção 2: Buscar por nome
+## Opção 1: Buscar por Ingrediente
 
-Converte o texto digitado pelo usuário para minúsculas e chama trie.buscar(). Se a lista retornada estiver
-vazia, exibe mensagem de não encontrado. Caso contrário, exibe os nomes encontrados.
+Converte o texto digitado para minúsculas e chama `tabelaIngredientes.buscar()`.
 
-### Opção 3: Recomendar receita
+Se a lista retornada estiver vazia, exibe mensagem de não encontrado. Caso contrário, exibe os nomes de cada receita retornada, que estavam na lista associada por aquele ingrediente na Hash.
 
-Pede ao usuário um valor de orçamento máximo e exibe as receitas recomendadas
-dentro daquele limite.
-Em seguida, converte o valor digitado para número decimal e chama recomendarReceitas()
-passando a lista receitas e o orçamento. Para cada receita retornada exibe o nome, o custo e a
-avaliação.
+## Opção 2: Buscar por nome
 
-### Opção 4: Modo Investigação
+Converte o texto digitado pelo usuário para minúsculas e chama `trie.buscar()`.
 
-O Modo Investigação é implementado somente por Árvore B. Ele verifica a integridade das receitas cadastradas, identificando duplicatas e receitas que
-foram alteradas após a inserção no sistema.
+Se a lista retornada estiver vazia, exibe mensagem de não encontrado. Caso contrário, exibe os nomes encontrados.
 
- Chama arvore.modoInvestigacao() passando a lista receitas. Recebe de volta duas
-listas — duplicatas e alteradas. Se ambas estiverem vazias, exibe que nenhuma inconsistência foi
-encontrada. Se houver duplicatas, lista os nomes e IDs das receitas duplicadas. Se houver
-alteradas, lista os nomes e IDs das receitas que tiveram seu conteúdo mudado.
+## Opção 3: Recomendar receita
 
-### Opção 5: Sair 
+Pede ao usuário um valor de orçamento máximo e exibe as receitas recomendadas dentro daquele limite.
 
-Encerra o programa exibindo uma mensagem de despedida e interrompendo o laço
-principal do menu com break.
+Em seguida, converte o valor digitado para número decimal e chama `recomendarReceitas()`, passando a lista `receitas` e o orçamento.
 
-## [RECUPERAÇÃO P1]
+Para cada receita retornada, exibe o nome, o custo e a avaliação.
 
-### Questão Escolhida
+O algoritmo guloso utilizado prioriza receitas com melhor relação entre avaliação e custo.
+
+## Opção 4: Modo Investigação
+
+O Modo Investigação é implementado utilizando a Árvore B.
+
+Ele verifica a integridade das receitas cadastradas, identificando duplicatas e receitas que foram alteradas após a inserção no sistema.
+
+Chama `arvore.modoInvestigacao()` passando a lista `receitas`.
+
+Recebe de volta duas listas — duplicatas e alteradas.
+
+Se ambas estiverem vazias, exibe que nenhuma inconsistência foi encontrada.
+
+Se houver duplicatas, lista os nomes e IDs das receitas duplicadas.
+
+Se houver alteradas, lista os nomes e IDs das receitas que tiveram seu conteúdo modificado.
+
+## Opção 5: Sair
+
+Encerra o programa exibindo uma mensagem de despedida e interrompendo o laço principal do menu com `break`.
+
+---
+
+# testarDisco.py
+
+Este arquivo foi criado especificamente para validar a implementação da **Opção C da Recuperação P1**, relacionada à persistência da Árvore B em memória secundária.
+
+Seu principal objetivo é demonstrar que a árvore consegue ser utilizada diretamente a partir do arquivo binário `.dat`, sem necessidade de reconstrução completa da estrutura na RAM.
+
+O arquivo inicializa uma Árvore B vazia e tenta carregar os blocos persistidos em disco utilizando:
+
+```python
+arvore.carregarDoDisco()
+```
+
+# [RECUPERAÇÃO P1]
+
+## Questão Escolhida
 
 A dupla escolheu recuperar a:
 
@@ -508,7 +566,7 @@ O objetivo da recuperação foi adaptar a implementação da Árvore B para func
 
 ---
 
-### Explicação Teórica e Arquitetural
+## Explicação Teórica e Arquitetural
 
 Inicialmente, a Árvore B estava sendo salva utilizando serialização completa da estrutura em memória RAM:
 
@@ -563,7 +621,7 @@ Essa recuperação permitiu compreender melhor:
 
 ---
 
-### Passo a Passo para Execução
+## Passo a Passo para Execução
 
 ### 1. Remover o arquivo antigo
 
