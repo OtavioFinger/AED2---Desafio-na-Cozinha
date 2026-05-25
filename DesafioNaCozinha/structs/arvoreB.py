@@ -10,7 +10,8 @@
 #     Exigência na Apresentação: Inicializar o sistema com a RAM limpa, abrir o arquivo binário gerado 
 # previamente e realizar uma busca com sucesso, provando o isolamento e leitura dos blocos de dados.
 
-
+import os
+import pickle
 class NodoB:
 
     def __init__(self):
@@ -160,3 +161,26 @@ class ArvoreB:
                 alteradas.append(receita)
 
         return duplicatas, alteradas
+    
+    # Função para salvar a árvore inteira em um arquivo .dat no disco
+    # Simula a persistência em memória secundária
+    def salvarEmDisco(self, caminho="arvore.dat"):
+ 
+        with open(caminho, "wb") as arquivo:
+            pickle.dump(self.raiz, arquivo)
+ 
+        print(f"Arvore salva em disco: {caminho}")
+ 
+    # Função para carregar a árvore do disco sem precisar reinserir as receitas
+    # Simula a leitura de blocos de disco
+    def carregarDoDisco(self, caminho="arvore.dat"):
+ 
+        if not os.path.exists(caminho):
+            print(f"Arquivo {caminho} nao encontrado.")
+            return False
+ 
+        with open(caminho, "rb") as arquivo:
+            self.raiz = pickle.load(arquivo)
+ 
+        print(f"Arvore carregada do disco: {caminho}")
+        return True

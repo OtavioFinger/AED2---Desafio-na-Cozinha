@@ -13,7 +13,7 @@ os.system('cls')
 
 receitas = []
 
-#função para inserir as receitas na hashtable
+# Função para inserir as receitas na hashtable
 def adicionarIngredientes(tabela, receitas):
 
     for receita in receitas:
@@ -57,6 +57,17 @@ for receita in receitas:
 arvore = ArvoreB()
 for receita in receitas:
     arvore.inserir(receita)
+
+# Se o arquivo .dat já existe, carrega do disco
+# Se não, insere todas as receitas e salva
+if arvore.carregarDoDisco("DesafioNaCozinha/data/arvore.dat"):
+    print("Árvore carregada do disco com sucesso!")
+else:
+    for receita in receitas:
+        arvore.inserir(receita)
+    arvore.salvarEmDisco("DesafioNaCozinha/data/arvore.dat")
+    print("Árvore criada e salva em disco!")
+
 
 while True:
     print("=======Bem vindo=======")
