@@ -290,7 +290,7 @@ A variável estática `contadorIds` é utilizada para gerar IDs únicos automati
 
 ---
 
-## Método `inserir()`
+## Método `inserir(self, receita)`
 
 O método `inserir()` é responsável por adicionar novas receitas na Árvore B.
 
@@ -309,7 +309,7 @@ Essa divisão mantém a Árvore B balanceada durante toda a execução.
 
 ---
 
-## Método `inserirNaoCheio()`
+## Método `inserirNaoCheio(self, nodo, receita)`
 
 Este método realiza a inserção propriamente dita em nós que ainda possuem espaço disponível.
 
@@ -323,7 +323,7 @@ Esse processo garante que a árvore continue balanceada mesmo após múltiplas i
 
 ---
 
-## Método `dividirFilho()`
+## Método `dividirFilho(self, pai, indice)`
 
 O método `dividirFilho()` implementa o processo de divisão de nós da Árvore B.
 
@@ -335,7 +335,7 @@ Esse mecanismo é o principal responsável pelo balanceamento automático da Ár
 
 ---
 
-## Método `buscarMemoria()`
+## Método `buscarMemoria(self, nodo, idReceita)`
 
 O método `buscarMemoria()` realiza buscas tradicionais diretamente na estrutura carregada na RAM.
 
@@ -370,7 +370,7 @@ Esses dados são serializados individualmente no arquivo `.dat`.
 
 ---
 
-## Método `salvarNodo()`
+## Método `salvarNodo(self, nodo, arquivo)`
 
 O método `salvarNodo()` salva cada bloco da árvore individualmente no arquivo binário.
 
@@ -382,7 +382,7 @@ Após salvar o bloco atual, o método continua recursivamente salvando todos os 
 
 ---
 
-## Método `salvarEmDisco()`
+## Método `salvarEmDisco(self, caminho="arvore.dat")`
 
 O método `salvarEmDisco()` é responsável por persistir toda a estrutura da Árvore B no arquivo `.dat`.
 
@@ -392,7 +392,7 @@ Essas informações permitem reconstruir a navegação da árvore posteriormente
 
 ---
 
-## Método `carregarBlocos()`
+## Método `carregarBlocos(self, caminho)`
 
 Este método lê o arquivo binário e reconstrói os blocos armazenados.
 
@@ -404,7 +404,7 @@ Cada bloco é indexado pelo seu `idBloco`, permitindo acesso rápido durante as 
 
 ---
 
-## Método `carregarDoDisco()`
+## Método `carregarDoDisco(self, caminho="arvore.dat")`
 
 O método `carregarDoDisco()` realiza a recuperação da árvore diretamente do arquivo binário.
 
@@ -416,7 +416,7 @@ Esse método permite inicializar o sistema sem reconstruir toda a árvore na RAM
 
 ---
 
-## Método `carregarNodo()`
+## Método `carregarNodo(self, idBloco)`
 
 O método `carregarNodo()` reconstrói um nodo específico a partir dos dados persistidos.
 
@@ -426,7 +426,7 @@ Esse comportamento simula operações reais de leitura de páginas de disco.
 
 ---
 
-## Método `buscar()`
+## Método `buscar(self, idReceita)`
 
 O método `buscar()` inicia o processo de busca diretamente no disco.
 
@@ -434,7 +434,7 @@ A busca começa a partir do bloco raiz carregado nos metadados da árvore.
 
 ---
 
-## Método `buscarDisco()`
+## Método `buscarDisco(self, idBloco, idReceita)`
 
 O método `buscarDisco()` implementa a navegação da Árvore B utilizando os blocos persistidos.
 
@@ -457,7 +457,7 @@ Esse processo representa o funcionamento de Árvores B utilizadas em bancos de d
 
 ---
 
-## Método `modoInvestigacao()`
+## Método `modoInvestigacao(self, receitas)`
 
 O método `modoInvestigacao()` é utilizado para verificar inconsistências nas receitas carregadas no sistema.
 
