@@ -39,7 +39,7 @@ Utiliza conceitos de Árvores Trie para buscar receitas por prefixos ou por seus
 
 ## 3. Recomendar receita
 
----
+Utiliza conceitos de Algoritmos Gulosos para recomendar receitas com melhor custo-benefício dentro do orçamento informado pelo usuário. 
 
 ## 4. Modo Investigação
 
