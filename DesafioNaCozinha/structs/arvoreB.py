@@ -1,20 +1,17 @@
-# Opção C: Árvores B e Simulação de Memória Secundária (I/O)
-
-#     Público-alvo: Duplas que indicaram ter maior dificuldade nas regras estruturais de divisão (split), 
-# fusão ou na motivação de hardware das Árvores B.
-#     O Desafio: A Árvore B de vocês não pode viver apenas na memória RAM. 
-# Vocês deverão implementar uma rotina de persistência em disco via arquivo binário (.dat ou .bin). 
-#     O código deve simular que cada nó da árvore B é uma página/bloco de disco físico. O sistema deve ser 
-# capaz de salvar a estrutura em disco e carregá-la sob demanda, realizando buscas diretamente no 
-# arquivo binário  sem precisar reconstruir a árvore na RAM do zero por inserções repetidas.
-#     Exigência na Apresentação: Inicializar o sistema com a RAM limpa, abrir o arquivo binário gerado 
-# previamente e realizar uma busca com sucesso, provando o isolamento e leitura dos blocos de dados.
-
-import os
 import pickle
+import os
+
+
 class NodoB:
 
-    def __init__(self):
+    contadorIds = 0
+
+    def __init__(self, folha=True):
+
+        self.idBloco = NodoB.contadorIds
+        NodoB.contadorIds += 1
+
+        self.folha = folha
         self.chaves = []
         self.filhos = []
 
@@ -22,165 +19,245 @@ class NodoB:
 class ArvoreB:
 
     def __init__(self):
+
         self.raiz = NodoB()
         self.maxChaves = 3
+        self.blocos = {}
+        self.idRaiz = self.raiz.idBloco
 
-    # Função para juntar todos os campos da receita em uma string,
-    # serve para comparar se a receita foi alterada depois de inserida
     def resumoReceita(self, receita):
-        return f"{receita.id}{receita.nome}{receita.categoria}{receita.ingredientes}{receita.tempo},{receita.custo}{receita.dificuldade}{receita.avaliacao}{receita.popularidade}"
 
-    # Função para inserir a receita na árvore pelo id
+        return (
+            f"{receita.id}"
+            f"{receita.nome}"
+            f"{receita.categoria}"
+            f"{receita.ingredientes}"
+            f"{receita.tempo}"
+            f"{receita.custo}"
+            f"{receita.dificuldade}"
+            f"{receita.avaliacao}"
+            f"{receita.popularidade}"
+        )
+
     def inserir(self, receita):
 
-        # Verifica se o id já existe, se sim é duplicata
-        if self.buscar(receita.id) is not None:
-            return False
+        if self.buscarMemoria(self.raiz, receita.id) is not None:
+            return
 
-        resumo = self.resumoReceita(receita)
+        raiz = self.raiz
 
-        # Se a raiz estiver cheia, cria uma nova raiz e divide
-        if len(self.raiz.chaves) == self.maxChaves:
-            novaRaiz = NodoB()
-            novaRaiz.filhos.append(self.raiz)
+        if len(raiz.chaves) == self.maxChaves:
+
+            novaRaiz = NodoB(False)
+
+            novaRaiz.filhos.append(raiz)
+
             self.dividirFilho(novaRaiz, 0)
+
             self.raiz = novaRaiz
+            self.idRaiz = novaRaiz.idBloco
 
-        self.inserirNaoCheio(self.raiz, receita, resumo)
-        return True
+            self.inserirNaoCheio(novaRaiz, receita)
 
-    def inserirNaoCheio(self, nodo, receita, resumo):
+        else:
+
+            self.inserirNaoCheio(raiz, receita)
+
+    def inserirNaoCheio(self, nodo, receita):
 
         i = len(nodo.chaves) - 1
 
-        # Se for folha, insere direto na posição correta
-        if len(nodo.filhos) == 0:
+        if nodo.folha:
+
             nodo.chaves.append(None)
 
-            while i >= 0 and receita.id < nodo.chaves[i][0]:
+            while i >= 0 and receita.id < nodo.chaves[i].id:
+
                 nodo.chaves[i + 1] = nodo.chaves[i]
                 i -= 1
 
-            nodo.chaves[i + 1] = (receita.id, receita, resumo)
+            nodo.chaves[i + 1] = receita
 
         else:
-            # Acha em qual filho deve descer
-            while i >= 0 and receita.id < nodo.chaves[i][0]:
+
+            while i >= 0 and receita.id < nodo.chaves[i].id:
                 i -= 1
 
             i += 1
 
-            # Se o filho estiver cheio, divide antes de descer
             if len(nodo.filhos[i].chaves) == self.maxChaves:
+
                 self.dividirFilho(nodo, i)
 
-                if receita.id > nodo.chaves[i][0]:
+                if receita.id > nodo.chaves[i].id:
                     i += 1
 
-            self.inserirNaoCheio(nodo.filhos[i], receita, resumo)
+            self.inserirNaoCheio(nodo.filhos[i], receita)
 
-    def dividirFilho(self, pai, i):
+    def dividirFilho(self, pai, indice):
 
-        filhoCheio = pai.filhos[i]
-        novoFilho = NodoB()
-        meio = 1
+        cheio = pai.filhos[indice]
 
-        # A chave do meio sobe para o pai
-        chaveMeio = filhoCheio.chaves[meio]
+        novo = NodoB(cheio.folha)
 
-        # Divide as chaves entre o filho atual e o novo filho
-        novoFilho.chaves = filhoCheio.chaves[meio + 1:]
-        filhoCheio.chaves = filhoCheio.chaves[:meio]
+        meio = len(cheio.chaves) // 2
 
-        # Divide os filhos também se não for folha
-        if len(filhoCheio.filhos) > 0:
-            novoFilho.filhos = filhoCheio.filhos[meio + 1:]
-            filhoCheio.filhos = filhoCheio.filhos[:meio + 1]
+        chaveMeio = cheio.chaves[meio]
 
-        pai.filhos.insert(i + 1, novoFilho)
-        pai.chaves.insert(i, chaveMeio)
+        novo.chaves = cheio.chaves[meio + 1:]
+        cheio.chaves = cheio.chaves[:meio]
 
-    # Função para buscar uma receita pelo id
+        if not cheio.folha:
+
+            novo.filhos = cheio.filhos[meio + 1:]
+            cheio.filhos = cheio.filhos[:meio + 1]
+
+        pai.filhos.insert(indice + 1, novo)
+        pai.chaves.insert(indice, chaveMeio)
+
+    def buscarMemoria(self, nodo, idReceita):
+
+        i = 0
+
+        while i < len(nodo.chaves) and idReceita > nodo.chaves[i].id:
+            i += 1
+
+        if i < len(nodo.chaves) and idReceita == nodo.chaves[i].id:
+            return nodo.chaves[i]
+
+        if nodo.folha:
+            return None
+
+        return self.buscarMemoria(nodo.filhos[i], idReceita)
+
+    def salvarNodo(self, nodo, arquivo):
+
+        dados = {
+            "idBloco": nodo.idBloco,
+            "folha": nodo.folha,
+            "chaves": nodo.chaves,
+            "filhos": [filho.idBloco for filho in nodo.filhos]
+        }
+
+        pickle.dump(dados, arquivo)
+
+        for filho in nodo.filhos:
+            self.salvarNodo(filho, arquivo)
+
+    # Função para salvar a árvore inteira em um arquivo .dat no disco
+    # Simula a persistência em memória secundária
+    def salvarEmDisco(self, caminho="arvore.dat"):
+
+        with open(caminho, "wb") as arquivo:
+
+            metadata = {
+                "raiz": self.idRaiz
+            }
+
+            pickle.dump(metadata, arquivo)
+
+            self.salvarNodo(self.raiz, arquivo)
+
+        print(f"Arvore salva em disco: {caminho}")
+
+    def carregarBlocos(self, caminho):
+
+        blocos = {}
+
+        with open(caminho, "rb") as arquivo:
+
+            metadata = pickle.load(arquivo)
+
+            self.idRaiz = metadata["raiz"]
+
+            while True:
+
+                try:
+
+                    dados = pickle.load(arquivo)
+
+                    blocos[dados["idBloco"]] = dados
+
+                except EOFError:
+                    break
+
+        return blocos
+
+    # Função para carregar a árvore do disco sem precisar reinserir as receitas
+    # Simula a leitura de blocos de disco
+    def carregarDoDisco(self, caminho="arvore.dat"):
+
+        if not os.path.exists(caminho):
+            print(f"Arquivo {caminho} nao encontrado.")
+            return False
+
+        self.blocos = self.carregarBlocos(caminho)
+
+        print(f"Arvore carregada do disco: {caminho}")
+
+        return True
+
+    def carregarNodo(self, idBloco):
+
+        dados = self.blocos[idBloco]
+
+        nodo = NodoB(dados["folha"])
+
+        nodo.idBloco = dados["idBloco"]
+        nodo.chaves = dados["chaves"]
+        nodo.filhos = dados["filhos"]
+
+        return nodo
+
     def buscar(self, idReceita):
 
-        return self.buscarNodo(self.raiz, idReceita)
+        return self.buscarDisco(self.idRaiz, idReceita)
 
-    def buscarNodo(self, nodo, idReceita):
+    def buscarDisco(self, idBloco, idReceita):
 
-        i = 0
-
-        while i < len(nodo.chaves) and idReceita > nodo.chaves[i][0]:
-            i += 1
-
-        if i < len(nodo.chaves) and idReceita == nodo.chaves[i][0]:
-            return nodo.chaves[i][1]
-
-        if len(nodo.filhos) == 0:
-            return None
-
-        return self.buscarNodo(nodo.filhos[i], idReceita)
-
-    # Função auxiliar para pegar o resumo guardado na árvore
-    def buscarResumo(self, nodo, idReceita):
+        nodo = self.carregarNodo(idBloco)
 
         i = 0
 
-        while i < len(nodo.chaves) and idReceita > nodo.chaves[i][0]:
+        while i < len(nodo.chaves) and idReceita > nodo.chaves[i].id:
             i += 1
 
-        if i < len(nodo.chaves) and idReceita == nodo.chaves[i][0]:
-            return nodo.chaves[i][2]
+        if i < len(nodo.chaves) and idReceita == nodo.chaves[i].id:
 
-        if len(nodo.filhos) == 0:
+            print(f"[DISCO] Bloco {nodo.idBloco} acessado")
+
+            return nodo.chaves[i]
+
+        if nodo.folha:
             return None
 
-        return self.buscarResumo(nodo.filhos[i], idReceita)
+        print(f"[DISCO] Navegando para bloco filho")
 
-    # Função do modo investigação
+        return self.buscarDisco(nodo.filhos[i], idReceita)
 
-    # Verifica duplicatas e alterações em todas as receitas
     def modoInvestigacao(self, receitas):
 
         duplicatas = []
         alteradas = []
-        idsVistos = []
+
+        ids = set()
 
         for receita in receitas:
 
-            # Se o id já apareceu antes na lista, é duplicata
-            if receita.id in idsVistos:
+            if receita.id in ids:
                 duplicatas.append(receita)
+
             else:
-                idsVistos.append(receita.id)
+                ids.add(receita.id)
 
-            # Compara o resumo atual com o resumo guardado na árvore
-            resumoGuardado = self.buscarResumo(self.raiz, receita.id)
-            resumoAtual = self.resumoReceita(receita)
+            receitaArvore = self.buscarMemoria(self.raiz, receita.id)
 
-            if resumoGuardado is not None and resumoAtual != resumoGuardado:
-                alteradas.append(receita)
+            if receitaArvore is not None:
+
+                resumoAtual = self.resumoReceita(receita)
+                resumoOriginal = self.resumoReceita(receitaArvore)
+
+                if resumoAtual != resumoOriginal:
+                    alteradas.append(receita)
 
         return duplicatas, alteradas
-    
-    # Função para salvar a árvore inteira em um arquivo .dat no disco
-    # Simula a persistência em memória secundária
-    def salvarEmDisco(self, caminho="arvore.dat"):
- 
-        with open(caminho, "wb") as arquivo:
-            pickle.dump(self.raiz, arquivo)
- 
-        print(f"Arvore salva em disco: {caminho}")
- 
-    # Função para carregar a árvore do disco sem precisar reinserir as receitas
-    # Simula a leitura de blocos de disco
-    def carregarDoDisco(self, caminho="arvore.dat"):
- 
-        if not os.path.exists(caminho):
-            print(f"Arquivo {caminho} nao encontrado.")
-            return False
- 
-        with open(caminho, "rb") as arquivo:
-            self.raiz = pickle.load(arquivo)
- 
-        print(f"Arvore carregada do disco: {caminho}")
-        return True

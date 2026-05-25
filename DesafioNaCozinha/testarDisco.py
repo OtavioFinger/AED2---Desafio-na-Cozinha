@@ -1,8 +1,3 @@
-# Arquivo separado para testar a persistência em disco da Árvore B
-# Rodar este arquivo de forma independente do desafioMain.py
-# Ele carrega a árvore do arquivo .dat sem reconstruir nada na ram
-# e realiza uma busca por id diretamente da estrutura carregada.
-
 import os
 import sys
 
@@ -28,22 +23,29 @@ else:
     print("RAM iniciada limpa. Árvore carregada apenas do disco.")
     print("\n")
 
-    idBusca = int(input("Digite o ID da receita que deseja buscar: "))
+    while True:
 
-    resultado = arvore.buscar(idBusca)
+        idBusca = int(input("Digite o ID da receita que deseja buscar (-1 para sair): "))
 
-    print("\n")
+        if idBusca == -1:
+            break
 
-    if resultado is None:
-        print(f"Nenhuma receita encontrada com ID {idBusca}.")
+        resultado = arvore.buscar(idBusca)
 
-    else:
-        print("Receita encontrada diretamente do disco:")
-        print(f"  ID:           {resultado.id}")
-        print(f"  Nome:         {resultado.nome}")
-        print(f"  Categoria:    {resultado.categoria}")
-        print(f"  Tempo:        {resultado.tempo} min")
-        print(f"  Custo:        R${resultado.custo}")
-        print(f"  Dificuldade:  {resultado.dificuldade}")
-        print(f"  Avaliação:    {resultado.avaliacao}")
-        print(f"  Popularidade: {resultado.popularidade}")
+        print("\n")
+
+        if resultado is None:
+            print(f"Nenhuma receita encontrada com ID {idBusca}.")
+
+        else:
+            print("Receita encontrada diretamente do disco:")
+            print(f"  ID:           {resultado.id}")
+            print(f"  Nome:         {resultado.nome}")
+            print(f"  Categoria:    {resultado.categoria}")
+            print(f"  Tempo:        {resultado.tempo} min")
+            print(f"  Custo:        R${resultado.custo}")
+            print(f"  Dificuldade:  {resultado.dificuldade}")
+            print(f"  Avaliação:    {resultado.avaliacao}")
+            print(f"  Popularidade: {resultado.popularidade}")
+
+        print()

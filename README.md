@@ -66,6 +66,7 @@ Nesta seção, cada arquivo principal do projeto será explicado individualmente
     ├── README.md
     ├── DesafioNaCozinha/
     │ ├── desafioMain.py
+    │ ├── testarDisco.py
     │ ├── data/
     │ │ └── receita.json
     │ ├── models/
@@ -219,24 +220,224 @@ todos os nomes que começam com o prefixo digitado são coletados automaticament
 
 ## structs/arvoreB.py
 
-Este arquivo implementa a Árvore B do zero, responsável pelo Modo Investigação. **A Árvore B é
-uma estrutura de busca ordenada onde cada nó pode guardar até 3 chaves e ter até 4 filhos**. As
-receitas são indexadas pelo ID, o que permite localizar qualquer receita de forma eficiente sem
-percorrer a lista inteira. Além de armazenar cada receita, a árvore guarda também um resumo do
-conteúdo dela no momento da inserção, que é usado posteriormente para detectar alterações.
+Este arquivo implementa toda a lógica da Árvore B utilizada no sistema. A estrutura é responsável principalmente pelo **Modo Investigação**, além de também realizar buscas eficientes por ID das receitas.
 
-### Classe NodoB:
+A Árvore B foi escolhida por ser uma estrutura de busca balanceada e extremamente eficiente para grandes volumes de dados. Diferente de árvores binárias comuns, cada nó pode armazenar múltiplas chaves e múltiplos filhos, reduzindo a altura da árvore e diminuindo a quantidade de acessos necessários durante buscas.
 
-Cada nó possui dois atributos. 
+Nesta implementação, cada nó pode armazenar até 3 chaves e possuir até 4 filhos.
 
-1. O primeiro é chaves, uma lista de tuplas onde cada tupla
-guarda três coisas: 
+As receitas são organizadas utilizando o atributo `id`, permitindo localizar rapidamente qualquer receita sem percorrer toda a lista carregada do JSON.
 
-1.1 O ID da receita, 
-1.2 O objeto receita completo 
-1.3 O resumo do conteúdo dela no momento da inserção. 
+Além da implementação tradicional da Árvore B, este arquivo também foi adaptado para a **Opção C da recuperação**, implementando persistência em memória secundária utilizando arquivos binários (`.dat`).
 
-2. O segundo é filhos, uma lista com os nós filhos daquele nó. 
+A estrutura foi modificada para simular o funcionamento de sistemas reais de banco de dados e armazenamento em disco, onde cada nó da árvore representa um bloco/página de memória secundária.
+
+---
+
+### Classe NodoB
+
+A classe `NodoB` representa cada nó da Árvore B.
+
+Cada nodo possui:
+
+1. `idBloco`
+2. `folha`
+3. `chaves`
+4. `filhos`
+
+O atributo `idBloco` funciona como um identificador único do bloco no disco. Esse identificador é utilizado para localizar os nós durante as buscas realizadas diretamente no arquivo binário.
+
+O atributo `folha` indica se aquele nodo é um nó folha ou interno.
+
+A lista `chaves` armazena os objetos de receitas organizados de forma ordenada pelo ID.
+
+Já a lista `filhos` armazena as referências para os nós filhos daquele bloco.
+
+A variável estática `contadorIds` é utilizada para gerar IDs únicos automaticamente para cada novo bloco criado na árvore.
+
+---
+
+### Método inserir()
+
+O método `inserir()` é responsável por adicionar novas receitas na Árvore B.
+
+Antes de inserir, o sistema verifica se já existe uma receita com o mesmo ID utilizando a busca em memória:
+
+```python
+if self.buscarMemoria(self.raiz, receita.id) is not None:
+    return
+```
+
+Isso impede duplicações dentro da estrutura.
+
+Caso a raiz esteja cheia, ocorre o processo de divisão (`split`) do nó raiz, criando uma nova raiz e reorganizando os filhos da árvore.
+
+Essa divisão mantém a Árvore B balanceada durante toda a execução.
+
+---
+
+### Método inserirNaoCheio()
+
+Este método realiza a inserção propriamente dita em nós que ainda possuem espaço disponível.
+
+Se o nodo for folha, a receita é inserida diretamente na posição correta, mantendo as chaves ordenadas pelo ID.
+
+Caso o nodo não seja folha, o algoritmo determina qual filho deve receber a inserção.
+
+Se o filho estiver cheio, ocorre um `split` antes de continuar a inserção.
+
+Esse processo garante que a árvore continue balanceada mesmo após múltiplas inserções.
+
+---
+
+### Método dividirFilho()
+
+O método `dividirFilho()` implementa o processo de divisão de nós da Árvore B.
+
+Quando um nodo atinge o limite máximo de chaves, ele é dividido em dois blocos menores.
+
+O elemento central sobe para o nó pai, enquanto as demais chaves são separadas entre os dois filhos.
+
+Esse mecanismo é o principal responsável pelo balanceamento automático da Árvore B.
+
+---
+
+### Método buscarMemoria()
+
+O método `buscarMemoria()` realiza buscas tradicionais diretamente na estrutura carregada na RAM.
+
+A busca percorre os nós comparando o ID desejado com as chaves armazenadas até localizar a receita correta ou determinar que ela não existe.
+
+Esse método é utilizado principalmente durante inserções e no Modo Investigação.
+
+---
+
+### Persistência em Disco
+
+A principal modificação realizada na recuperação foi a implementação da persistência em memória secundária.
+
+Anteriormente, toda a árvore era serializada diretamente utilizando:
+
+```python
+pickle.dump(self.raiz, arquivo)
+```
+
+Essa abordagem salvava toda a estrutura de memória RAM de uma única vez, não representando corretamente o funcionamento de uma Árvore B em sistemas reais.
+
+Na nova implementação, cada nodo passou a ser tratado como um bloco/página de disco independente.
+
+Cada bloco armazena:
+
+- identificador do bloco;
+- informação de folha;
+- chaves armazenadas;
+- IDs dos filhos.
+
+Esses dados são serializados individualmente no arquivo `.dat`.
+
+---
+
+### Método salvarNodo()
+
+O método `salvarNodo()` salva cada bloco da árvore individualmente no arquivo binário.
+
+Os filhos não são armazenados diretamente como objetos, mas apenas pelos seus IDs de bloco.
+
+Isso permite simular referências de páginas em memória secundária.
+
+Após salvar o bloco atual, o método continua recursivamente salvando todos os filhos da árvore.
+
+---
+
+### Método salvarEmDisco()
+
+O método `salvarEmDisco()` é responsável por persistir toda a estrutura da Árvore B no arquivo `.dat`.
+
+Além dos blocos, o sistema salva também os metadados da árvore, principalmente o ID do bloco raiz.
+
+Essas informações permitem reconstruir a navegação da árvore posteriormente sem necessidade de reinserir todas as receitas.
+
+---
+
+### Método carregarBlocos()
+
+Este método lê o arquivo binário e reconstrói os blocos armazenados.
+
+Primeiramente, os metadados são carregados para recuperar o ID da raiz.
+
+Em seguida, todos os blocos persistidos são carregados para um dicionário interno.
+
+Cada bloco é indexado pelo seu `idBloco`, permitindo acesso rápido durante as buscas.
+
+---
+
+### Método carregarDoDisco()
+
+O método `carregarDoDisco()` realiza a recuperação da árvore diretamente do arquivo binário.
+
+Se o arquivo não existir, o sistema informa que a árvore ainda não foi persistida.
+
+Caso exista, os blocos são carregados e a árvore passa a funcionar utilizando os dados armazenados em disco.
+
+Esse método permite inicializar o sistema sem reconstruir toda a árvore na RAM.
+
+---
+
+### Método carregarNodo()
+
+O método `carregarNodo()` reconstrói um nodo específico a partir dos dados persistidos.
+
+A partir do `idBloco`, o sistema recupera as informações do bloco correspondente e recria o nodo dinamicamente.
+
+Esse comportamento simula operações reais de leitura de páginas de disco.
+
+---
+
+### Método buscar()
+
+O método `buscar()` inicia o processo de busca diretamente no disco.
+
+A busca começa a partir do bloco raiz carregado nos metadados da árvore.
+
+---
+
+### Método buscarDisco()
+
+O método `buscarDisco()` implementa a navegação da Árvore B utilizando os blocos persistidos.
+
+A cada etapa da busca:
+
+1. um bloco é carregado;
+2. as chaves são verificadas;
+3. o próximo filho é determinado;
+4. um novo bloco é acessado.
+
+Durante a execução, mensagens como:
+
+```text
+[DISCO] Bloco X acessado
+```
+
+são exibidas para demonstrar os acessos simulados à memória secundária.
+
+Esse processo representa o funcionamento de Árvores B utilizadas em bancos de dados e sistemas de arquivos reais.
+
+---
+
+### Método modoInvestigacao()
+
+O método `modoInvestigacao()` é utilizado para verificar inconsistências nas receitas carregadas no sistema.
+
+Ele identifica:
+
+- receitas duplicadas;
+- receitas alteradas após a inserção na árvore.
+
+Para isso, o sistema percorre todas as receitas e compara o estado atual dos dados com o estado originalmente armazenado na Árvore B.
+
+A comparação é feita utilizando o método `resumoReceita()`, que gera uma representação textual dos dados da receita.
+
+Caso existam diferenças entre os dados atuais e os dados armazenados originalmente, a receita é marcada como alterada.
 
 ## desafioMain.py
 
@@ -292,3 +493,163 @@ alteradas, lista os nomes e IDs das receitas que tiveram seu conteúdo mudado.
 
 Encerra o programa exibindo uma mensagem de despedida e interrompendo o laço
 principal do menu com break.
+
+## [RECUPERAÇÃO P1]
+
+### Questão Escolhida
+
+A dupla escolheu recuperar a:
+
+```text
+Opção C: Árvores B e Simulação de Memória Secundária (I/O)
+```
+
+O objetivo da recuperação foi adaptar a implementação da Árvore B para funcionar com persistência em disco utilizando arquivos binários (`.dat`), simulando o comportamento de páginas/blocos de memória secundária utilizados em bancos de dados e sistemas de arquivos reais.
+
+---
+
+### Explicação Teórica e Arquitetural
+
+Inicialmente, a Árvore B estava sendo salva utilizando serialização completa da estrutura em memória RAM:
+
+```python
+pickle.dump(self.raiz, arquivo)
+```
+
+Apesar de funcional, essa abordagem não simulava corretamente o funcionamento de uma Árvore B em memória secundária, pois toda a árvore era carregada de uma única vez.
+
+Após a recuperação, a implementação foi reformulada para:
+
+- salvar cada nó individualmente como um bloco de disco;
+- utilizar identificadores de blocos (`idBloco`);
+- armazenar referências lógicas entre os nós;
+- carregar os nós sob demanda durante a busca;
+- permitir buscas diretamente no arquivo binário sem reinserção das receitas.
+
+Cada nó passou a representar uma página/bloco de disco contendo:
+
+- informações da folha;
+- chaves armazenadas;
+- referências para os filhos.
+
+Durante as buscas, o sistema carrega apenas os blocos necessários, simulando operações reais de I/O.
+
+A busca passou a funcionar da seguinte forma:
+
+```text
+buscar(id)
+    ↓
+carregar bloco do disco
+    ↓
+verificar chaves
+    ↓
+navegar para próximo bloco
+```
+
+Durante a execução, o sistema exibe mensagens como:
+
+```text
+[DISCO] Bloco X acessado
+```
+
+demonstrando os acessos simulados à memória secundária.
+
+Essa recuperação permitiu compreender melhor:
+
+- o motivo do uso de Árvores B em bancos de dados;
+- a relação entre Árvores B e hardware;
+- o conceito de páginas/blocos;
+- a importância da redução de operações de I/O.
+
+---
+
+### Passo a Passo para Execução
+
+### 1. Remover o arquivo antigo
+
+Excluir:
+
+```text
+DesafioNaCozinha/data/arvore.dat
+```
+
+Isso garante que a árvore seja recriada no novo formato baseado em blocos.
+
+---
+
+### 2. Executar o sistema principal
+
+Comando:
+
+```bash
+python desafioMain.py
+```
+
+Na primeira execução, o sistema irá:
+
+- carregar o JSON;
+- construir a Árvore B;
+- salvar os blocos no arquivo `arvore.dat`.
+
+Saída esperada:
+
+```text
+Árvore criada e salva em disco!
+```
+
+---
+
+### 3. Executar novamente
+
+Executar novamente:
+
+```bash
+python desafioMain.py
+```
+
+Agora a árvore será carregada diretamente do disco.
+
+Saída esperada:
+
+```text
+Árvore carregada do disco com sucesso!
+```
+
+---
+
+### 4. Testar a memória secundária
+
+Executar:
+
+```bash
+python testarDisco.py
+```
+
+O sistema iniciará com a RAM limpa e utilizará apenas os blocos persistidos no arquivo binário.
+
+Saída esperada:
+
+```text
+RAM iniciada limpa. Árvore carregada apenas do disco.
+```
+
+---
+
+### 5. Realizar buscas
+
+Inserir um ID de receita válido.
+
+Exemplo:
+
+```text
+Digite o ID da receita que deseja buscar: 10
+```
+
+Durante a busca, o sistema exibirá mensagens indicando os acessos aos blocos:
+
+```text
+[DISCO] Bloco X acessado
+[DISCO] Navegando para bloco filho
+```
+
+Ao final, os dados da receita serão retornados diretamente da estrutura persistida em disco.
