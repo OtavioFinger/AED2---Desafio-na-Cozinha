@@ -27,25 +27,12 @@ def adicionarIngredientes(tabela, receitas):
 
 
 # pega e le o arquivo json
-with open("DesafioNaCozinha/data/receita.json", "r", encoding="utf-8") as doc:
+with open("data/receita.json", "r", encoding="utf-8") as doc:
 
     dados = json.load(doc)
 
     for item in dados:
-
-        receita = Receita(
-            item["id"],
-            item["nome"],
-            item["categoria"],
-            item["ingredientes"],
-            item["tempo"],
-            item["custo"],
-            item["dificuldade"],
-            item["avaliacao"],
-            item["popularidade"]
-        )
-
-        receitas.append(receita)
+        receitas.append(Receita(**item))
 
 tabelaIngredientes = HashTable()
 adicionarIngredientes(tabelaIngredientes, receitas)
@@ -58,12 +45,12 @@ arvore = ArvoreB()
 
 # Se o arquivo .dat já existe, carrega do disco
 # Se não, insere todas as receitas e salva
-if arvore.carregarDoDisco("DesafioNaCozinha/data/arvore.dat"):
+if arvore.carregarDoDisco("DesafioNaCozinhadata/arvore.dat"):
     print("Árvore carregada do disco com sucesso!")
 else:
     for receita in receitas:
         arvore.inserir(receita)
-    arvore.salvarEmDisco("DesafioNaCozinha/data/arvore.dat")
+    arvore.salvarEmDisco("data/arvore.dat")
     print("Árvore criada e salva em disco!")
 
 while True:

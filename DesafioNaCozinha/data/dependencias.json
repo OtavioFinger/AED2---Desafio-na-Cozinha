@@ -1,0 +1,169 @@
+{
+    "preparos": [
+        {
+            "id": 100,
+            "nome": "Caldo de Carne Base"
+        },
+        {
+            "id": 101,
+            "nome": "Massa de Torta Pré-assada"
+        },
+        {
+            "id": 102,
+            "nome": "Molho de Tomate Rústico"
+        },
+        {
+            "id": 103,
+            "nome": "Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "id": 104,
+            "nome": "Caldo de Legumes"
+        }
+    ],
+    "arestas": [
+        {
+            "origem": 100,
+            "destino": 52,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 20,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 24,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 19,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 12,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 50,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 101,
+            "destino": 8,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 2,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 16,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 25,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 53,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 102,
+            "destino": 17,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 33,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 52,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 21,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 41,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 44,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 103,
+            "destino": 9,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 36,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 4,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 55,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 51,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 13,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 104,
+            "destino": 46,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 104,
+            "destino": 35,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 104,
+            "destino": 36,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 104,
+            "destino": 52,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 12,
+            "destino": 21
+        },
+        {
+            "origem": 42,
+            "destino": 6
+        }
+    ]
+}
