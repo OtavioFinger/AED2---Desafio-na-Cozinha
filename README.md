@@ -110,9 +110,6 @@ Se, ao final, o tamanho da lista `ordem` for menor que o número total de vérti
 
 Para validar essa detecção, o arquivo `dependencias.json` inclui propositalmente dois preparos fictícios ("Preparo Cíclico A" e "Preparo Cíclico B") que dependem um do outro.
 
-**Porque essa estrutura?** Porque BFS/Kahn e não DFS com pilha de recursão para ordenação topológica? Pq o Kahn detecta ciclo de forma mais natural, sem precisar de cores/estado de visita "em progresso", e evita risco de estouro de pilha em grafos maiores.
-
-
 ### Método `buscar_pre_requisitos(receita_alvo)`
 
 Responde à consulta "Quais preparos precisam ser concluídos antes da receita X?". Constrói um **grafo reverso** (invertendo o sentido de todas as arestas) e faz uma busca em largura (BFS) a partir da receita alvo, coletando todos os vértices alcançáveis nesse grafo invertido — ou seja, todos os preparos que, direta ou indiretamente, precisam acontecer antes dela.
@@ -120,6 +117,8 @@ Responde à consulta "Quais preparos precisam ser concluídos antes da receita X
 **Complexidade:** O(V + E) tanto para a ordenação topológica quanto para a busca de pré-requisitos, onde V é o número de preparos/receitas e E o número de dependências cadastradas.
 
 ---
+
+**Porque essa estrutura?** Porque BFS/Kahn e não DFS com pilha de recursão para ordenação topológica? Pq o Kahn detecta ciclo de forma mais natural, sem precisar de cores/estado de visita "em progresso", e evita risco de estouro de pilha em grafos maiores.
 
 # Módulo 6 — Menu Degustação VIP (`algorithms/bottomUp.py`)
 
@@ -203,7 +202,7 @@ Implementa o **Algoritmo de Fluxo Máximo (Ford-Fulkerson / Edmonds-Karp)**, usa
 
 ---
 
-**Por que essa estrutura?**: Por que Kruskal e não Prim? Mais simples de implementar com lista de arestas ordenadas, funciona bem com grafos esparsos como o de logística. 
+**Por que essa estrutura?** Por que Kruskal e não Prim? Mais simples de implementar com lista de arestas ordenadas, funciona bem com grafos esparsos como o de logística. 
 Por que Dijkstra e não Bellman-Ford? Pesos não-negativos, então Dijkstra é mais eficiente. Por que BFS (Edmonds-Karp) e não DFS puro no Ford-Fulkerson? (garante caminhos aumentantes mais curtos, evitando piores casos de convergência lenta).
 
 # Módulo 8 / Laboratório de Inovação — Comunidades Gastronômicas (`algorithms/comunidades.py`)
