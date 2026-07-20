@@ -33,7 +33,7 @@ O restaurante agora oferece, além dos modos antigos:
 
 Abaixo, está descrito toda a árvore de arquivos do projeto, seus usos, bem como relação com cada módulo do código será descrito nas seções de módulos individuais:
 
-
+```text
 AED2 - Desafio na Cozinha/
 ├── README.md
 ├── README - T1.md
@@ -65,7 +65,7 @@ AED2 - Desafio na Cozinha/
         ├── heap.py
         ├── trie.py
         └── uFind.py
-
+```
 
 # Estrutura Central: `structs/grafo.py`
 
