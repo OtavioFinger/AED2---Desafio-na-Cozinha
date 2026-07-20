@@ -12,6 +12,8 @@ from structs.grafo import Grafo
 from algorithms.kahnAlgoritm import OficinaProducao
 from algorithms.mst import PlanejamentoLogistico
 from algorithms.bottomUp import MenuVIP
+from algorithms.comunidades import ComunidadesGastronomicas
+from algorithms.menuNamorados import MenuNamorados
 
 os.system('cls')
 
@@ -109,6 +111,8 @@ while True:
     print("5- Oficina de Produção")
     print("6- Logística de Distribuição")
     print("7- Otimização de Cardápio")
+    print("8- Comunidades Gastronômicas")
+    print("9- Menu Especial Dia dos Namorados")
     print("0- Sair")
 
     opcao = input("Escolha uma opção: ").lower()
@@ -391,6 +395,56 @@ while True:
     elif opcao == "0":
         print("Até logo!")
         break
+
+    elif opcao == "8":
+
+        comunidades = ComunidadesGastronomicas(receitas)
+
+        comunidades.imprimir()
+
+    elif opcao == "9":
+        print("\n=== MENU ESPECIAL DIA DOS NAMORADOS ===")
+        try:
+            tempo_max = int(input("Tempo máximo de preparo (min): "))
+            custo_max = float(input("Custo máximo (R$): "))
+            print("Dificuldade logística máxima aceita: 1-Baixa 2-Média 3-Alta")
+            dificuldade_max = int(input("Escolha (1/2/3): "))
+        except ValueError:
+            print("Digite apenas números.")
+            continue
+
+        print("\nCritério de otimização:")
+        print("a) Maior lucro")
+        print("b) Melhor avaliação média")
+        print("c) Menor tempo de preparo")
+        print("d) Maior popularidade")
+        print("e) Melhor equilíbrio (lucro + avaliação + tempo)")
+        escolha = input("Escolha (a/b/c/d/e): ").lower()
+
+        criterios = {"a": "lucro", "b": "avaliacao", "c": "tempo", "d": "popularidade", "e": "equilibrio"}
+        criterio = criterios.get(escolha, "lucro")
+
+        menu_namorados = MenuNamorados(receitas)
+        combinacao, pontuacao = menu_namorados.montar_menu(tempo_max, custo_max, dificuldade_max, criterio)
+
+        if combinacao is None:
+            print("\nNenhum menu encontrado dentro dessas restrições.")
+        else:
+            entrada, principal, sobremesa = combinacao
+            info = menu_namorados.justificar(combinacao, criterio)
+
+            print("\n==============================")
+            print("Menu Especial Dia dos Namorados:")
+            print(f"Entrada: {entrada.nome}")
+            print(f"Prato principal: {principal.nome}")
+            print(f"Sobremesa: {sobremesa.nome}")
+            print(f"Valor total de venda: R${info['venda_total']:.2f}")
+            print(f"Custo estimado: R${info['custo_total']:.2f}")
+            print(f"Lucro estimado: R${info['lucro_total']:.2f}")
+            print(f"Tempo total de preparo: {info['tempo_total']} minutos")
+            print(f"Avaliação média: {info['avaliacao_media']}")
+            print(f"\nJustificativa:\n{info['justificativa']}")
+            print("==============================\n")
 
     else:
         print("Opção inválida.")
