@@ -273,17 +273,7 @@ O arquivo principal foi expandido (sem remover nada do T1) para:
 - Exibir três novas opções de menu ligadas aos grafos (5 - Oficina de Produção, 6 - Logística de Distribuição, 7 - Otimização de Cardápio) e duas ligadas aos demais algoritmos (8 - Comunidades Gastronômicas, 9 - Menu Especial Dia dos Namorados).
 - Cada opção nova instancia a classe correspondente (`OficinaProducao`, `PlanejamentoLogistico`, `MenuVIP`, `ComunidadesGastronomicas`, `MenuNamorados`) e traduz a entrada/saída do usuário para os métodos descritos acima.
 
-# Dimensão das estruturas utilizadas
-
-- Grafo de dependências entre preparos (`dependencias.json`): 10 preparos intermediários + as receitas do sistema como vértices, com 60 arestas de pré-requisito (incluindo um ciclo proposital para validar a detecção de inconsistências).
-- Grafo de logística (`logistica.json`): 8 regiões de entrega, 3 estações de preparo e 5 pontos de retirada como vértices (16 vértices), interligados por 66 rotas com peso (tempo) e capacidade.
-- Base de receitas (`receita.json`): 56 receitas, reaproveitadas em todos os módulos novos (dependências, menu VIP, comunidades e menu dos namorados).
-
-Ambas as redes atendem ao requisito mínimo de 30 vértices e 50 arestas somando o total de estruturas de grafo utilizadas no trabalho.
-
-### Observações Requisitadas
-
-6. Dimensões das Redes Utilizadas
+# Dimensões das Redes Utilizadas
 O enunciado exige que as redes utilizadas tenham tamanho suficiente para demonstrar de forma consistente o funcionamento dos algoritmos (no mínimo 30 vértices e 50 arestas). A tabela a seguir resume as dimensões efetivamente usadas em cada módulo:
 Rede
 Vértices
