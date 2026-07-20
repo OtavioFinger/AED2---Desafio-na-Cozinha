@@ -37,274 +37,508 @@
         {
             "id": "E1",
             "nome": "Cozinha 1",
-            "capacidade": 50
+            "capacidade": 27
         },
         {
             "id": "E2",
             "nome": "Cozinha 2",
-            "capacidade": 41
+            "capacidade": 23
         },
         {
             "id": "E3",
             "nome": "Cozinha 3",
-            "capacidade": 26
+            "capacidade": 37
         }
     ],
     "pontos_retirada": [
         {
             "id": "P1",
             "nome": "Ponto 1",
-            "regiao": "R6"
+            "regiao": "R4"
         },
         {
             "id": "P2",
             "nome": "Ponto 2",
-            "regiao": "R2"
+            "regiao": "R4"
         },
         {
             "id": "P3",
             "nome": "Ponto 3",
-            "regiao": "R2"
+            "regiao": "R6"
         },
         {
             "id": "P4",
             "nome": "Ponto 4",
-            "regiao": "R5"
+            "regiao": "R1"
         },
         {
             "id": "P5",
             "nome": "Ponto 5",
-            "regiao": "R7"
+            "regiao": "R5"
         }
     ],
     "rotas": [
         {
             "origem": "R1",
-            "destino": "P5",
-            "distancia_km": 12.0,
-            "tempo_min": 9
+            "destino": "E1",
+            "distancia_km": 9.3,
+            "tempo_min": 22,
+            "capacidade": 27
+        },
+        {
+            "origem": "E1",
+            "destino": "R1",
+            "distancia_km": 9.3,
+            "tempo_min": 22,
+            "capacidade": 27
         },
         {
             "origem": "R1",
-            "destino": "E3",
-            "distancia_km": 8.7,
-            "tempo_min": 18
-        },
-        {
-            "origem": "R2",
-            "destino": "R1",
-            "distancia_km": 7.5,
-            "tempo_min": 29
-        },
-        {
-            "origem": "R2",
-            "destino": "R7",
-            "distancia_km": 9.3,
-            "tempo_min": 6
-        },
-        {
-            "origem": "R2",
-            "destino": "R6",
-            "distancia_km": 11.6,
-            "tempo_min": 16
-        },
-        {
-            "origem": "R3",
-            "destino": "P2",
-            "distancia_km": 2.7,
-            "tempo_min": 11
-        },
-        {
-            "origem": "R3",
             "destino": "R4",
-            "distancia_km": 11.6,
-            "tempo_min": 21
+            "distancia_km": 4.1,
+            "tempo_min": 14,
+            "capacidade": 14
         },
         {
             "origem": "R4",
-            "destino": "R2",
-            "distancia_km": 9.8,
-            "tempo_min": 11
-        },
-        {
-            "origem": "R4",
-            "destino": "R5",
-            "distancia_km": 9.3,
-            "tempo_min": 22
-        },
-        {
-            "origem": "R4",
-            "destino": "P5",
-            "distancia_km": 7.1,
-            "tempo_min": 9
-        },
-        {
-            "origem": "R5",
-            "destino": "E2",
-            "distancia_km": 4.8,
-            "tempo_min": 15
-        },
-        {
-            "origem": "R5",
-            "destino": "P4",
-            "distancia_km": 2.5,
-            "tempo_min": 23
-        },
-        {
-            "origem": "R5",
-            "destino": "R6",
-            "distancia_km": 7.6,
-            "tempo_min": 13
-        },
-        {
-            "origem": "R6",
             "destino": "R1",
-            "distancia_km": 11.9,
-            "tempo_min": 5
+            "distancia_km": 4.1,
+            "tempo_min": 14,
+            "capacidade": 14
+        },
+        {
+            "origem": "R2",
+            "destino": "E3",
+            "distancia_km": 2.5,
+            "tempo_min": 23,
+            "capacidade": 37
+        },
+        {
+            "origem": "E3",
+            "destino": "R2",
+            "distancia_km": 2.5,
+            "tempo_min": 23,
+            "capacidade": 37
+        },
+        {
+            "origem": "R2",
+            "destino": "R3",
+            "distancia_km": 5.0,
+            "tempo_min": 6,
+            "capacidade": 18
+        },
+        {
+            "origem": "R3",
+            "destino": "R2",
+            "distancia_km": 5.0,
+            "tempo_min": 6,
+            "capacidade": 18
+        },
+        {
+            "origem": "R2",
+            "destino": "R6",
+            "distancia_km": 1.7,
+            "tempo_min": 28,
+            "capacidade": 21
         },
         {
             "origem": "R6",
+            "destino": "R2",
+            "distancia_km": 1.7,
+            "tempo_min": 28,
+            "capacidade": 21
+        },
+        {
+            "origem": "R3",
             "destino": "P5",
-            "distancia_km": 6.4,
-            "tempo_min": 13
+            "distancia_km": 4.8,
+            "tempo_min": 7,
+            "capacidade": 16
+        },
+        {
+            "origem": "P5",
+            "destino": "R3",
+            "distancia_km": 4.8,
+            "tempo_min": 7,
+            "capacidade": 16
+        },
+        {
+            "origem": "R3",
+            "destino": "E3",
+            "distancia_km": 9.4,
+            "tempo_min": 27,
+            "capacidade": 37
+        },
+        {
+            "origem": "E3",
+            "destino": "R3",
+            "distancia_km": 9.4,
+            "tempo_min": 27,
+            "capacidade": 37
+        },
+        {
+            "origem": "R3",
+            "destino": "R1",
+            "distancia_km": 1.7,
+            "tempo_min": 23,
+            "capacidade": 25
+        },
+        {
+            "origem": "R1",
+            "destino": "R3",
+            "distancia_km": 1.7,
+            "tempo_min": 23,
+            "capacidade": 25
+        },
+        {
+            "origem": "R4",
+            "destino": "P2",
+            "distancia_km": 3.4,
+            "tempo_min": 13,
+            "capacidade": 22
+        },
+        {
+            "origem": "P2",
+            "destino": "R4",
+            "distancia_km": 3.4,
+            "tempo_min": 13,
+            "capacidade": 22
+        },
+        {
+            "origem": "R4",
+            "destino": "R8",
+            "distancia_km": 8.6,
+            "tempo_min": 11,
+            "capacidade": 14
+        },
+        {
+            "origem": "R8",
+            "destino": "R4",
+            "distancia_km": 8.6,
+            "tempo_min": 11,
+            "capacidade": 14
+        },
+        {
+            "origem": "R5",
+            "destino": "E2",
+            "distancia_km": 10.8,
+            "tempo_min": 15,
+            "capacidade": 23
+        },
+        {
+            "origem": "E2",
+            "destino": "R5",
+            "distancia_km": 10.8,
+            "tempo_min": 15,
+            "capacidade": 23
+        },
+        {
+            "origem": "R5",
+            "destino": "P2",
+            "distancia_km": 2.0,
+            "tempo_min": 18,
+            "capacidade": 20
+        },
+        {
+            "origem": "P2",
+            "destino": "R5",
+            "distancia_km": 2.0,
+            "tempo_min": 18,
+            "capacidade": 20
         },
         {
             "origem": "R6",
-            "destino": "P2",
-            "distancia_km": 6.5,
-            "tempo_min": 6
-        },
-        {
-            "origem": "R7",
             "destino": "E2",
+            "distancia_km": 4.1,
+            "tempo_min": 17,
+            "capacidade": 23
+        },
+        {
+            "origem": "E2",
+            "destino": "R6",
+            "distancia_km": 4.1,
+            "tempo_min": 17,
+            "capacidade": 23
+        },
+        {
+            "origem": "R6",
+            "destino": "P3",
             "distancia_km": 2.3,
-            "tempo_min": 27
+            "tempo_min": 7,
+            "capacidade": 25
+        },
+        {
+            "origem": "P3",
+            "destino": "R6",
+            "distancia_km": 2.3,
+            "tempo_min": 7,
+            "capacidade": 25
         },
         {
             "origem": "R7",
-            "destino": "R5",
-            "distancia_km": 11.1,
-            "tempo_min": 5
+            "destino": "R8",
+            "distancia_km": 7.5,
+            "tempo_min": 30,
+            "capacidade": 18
+        },
+        {
+            "origem": "R8",
+            "destino": "R7",
+            "distancia_km": 7.5,
+            "tempo_min": 30,
+            "capacidade": 18
+        },
+        {
+            "origem": "R7",
+            "destino": "E1",
+            "distancia_km": 4.6,
+            "tempo_min": 28,
+            "capacidade": 27
+        },
+        {
+            "origem": "E1",
+            "destino": "R7",
+            "distancia_km": 4.6,
+            "tempo_min": 28,
+            "capacidade": 27
         },
         {
             "origem": "R8",
             "destino": "P2",
-            "distancia_km": 9.2,
-            "tempo_min": 23
-        },
-        {
-            "origem": "E1",
-            "destino": "R6",
-            "distancia_km": 11.6,
-            "tempo_min": 26
-        },
-        {
-            "origem": "E1",
-            "destino": "R4",
-            "distancia_km": 2.7,
-            "tempo_min": 11
-        },
-        {
-            "origem": "E1",
-            "destino": "R5",
-            "distancia_km": 2.0,
-            "tempo_min": 22
-        },
-        {
-            "origem": "E2",
-            "destino": "E3",
-            "distancia_km": 2.0,
-            "tempo_min": 18
-        },
-        {
-            "origem": "E2",
-            "destino": "P2",
-            "distancia_km": 2.5,
-            "tempo_min": 29
-        },
-        {
-            "origem": "E2",
-            "destino": "R6",
-            "distancia_km": 4.8,
-            "tempo_min": 13
-        },
-        {
-            "origem": "E3",
-            "destino": "P5",
-            "distancia_km": 2.4,
-            "tempo_min": 25
-        },
-        {
-            "origem": "E3",
-            "destino": "R2",
-            "distancia_km": 11.8,
-            "tempo_min": 12
-        },
-        {
-            "origem": "E3",
-            "destino": "E1",
-            "distancia_km": 7.1,
-            "tempo_min": 13
-        },
-        {
-            "origem": "P1",
-            "destino": "E2",
-            "distancia_km": 9.1,
-            "tempo_min": 20
-        },
-        {
-            "origem": "P1",
-            "destino": "R1",
-            "distancia_km": 7.7,
-            "tempo_min": 20
+            "distancia_km": 7.3,
+            "tempo_min": 21,
+            "capacidade": 17
         },
         {
             "origem": "P2",
+            "destino": "R8",
+            "distancia_km": 7.3,
+            "tempo_min": 21,
+            "capacidade": 17
+        },
+        {
+            "origem": "R8",
             "destino": "P3",
-            "distancia_km": 8.1,
-            "tempo_min": 7
-        },
-        {
-            "origem": "P2",
-            "destino": "E1",
-            "distancia_km": 11.7,
-            "tempo_min": 29
+            "distancia_km": 2.3,
+            "tempo_min": 19,
+            "capacidade": 24
         },
         {
             "origem": "P3",
             "destino": "R8",
+            "distancia_km": 2.3,
+            "tempo_min": 19,
+            "capacidade": 24
+        },
+        {
+            "origem": "E1",
+            "destino": "R8",
             "distancia_km": 4.8,
-            "tempo_min": 11
+            "tempo_min": 11,
+            "capacidade": 27
+        },
+        {
+            "origem": "R8",
+            "destino": "E1",
+            "distancia_km": 4.8,
+            "tempo_min": 11,
+            "capacidade": 27
+        },
+        {
+            "origem": "E1",
+            "destino": "P5",
+            "distancia_km": 11.7,
+            "tempo_min": 24,
+            "capacidade": 27
+        },
+        {
+            "origem": "P5",
+            "destino": "E1",
+            "distancia_km": 11.7,
+            "tempo_min": 24,
+            "capacidade": 27
+        },
+        {
+            "origem": "E2",
+            "destino": "P3",
+            "distancia_km": 10.9,
+            "tempo_min": 15,
+            "capacidade": 23
         },
         {
             "origem": "P3",
-            "destino": "P5",
-            "distancia_km": 11.7,
-            "tempo_min": 24
+            "destino": "E2",
+            "distancia_km": 10.9,
+            "tempo_min": 15,
+            "capacidade": 23
+        },
+        {
+            "origem": "E2",
+            "destino": "R1",
+            "distancia_km": 11.6,
+            "tempo_min": 10,
+            "capacidade": 23
+        },
+        {
+            "origem": "R1",
+            "destino": "E2",
+            "distancia_km": 11.6,
+            "tempo_min": 10,
+            "capacidade": 23
+        },
+        {
+            "origem": "E3",
+            "destino": "R6",
+            "distancia_km": 3.3,
+            "tempo_min": 29,
+            "capacidade": 37
+        },
+        {
+            "origem": "R6",
+            "destino": "E3",
+            "distancia_km": 3.3,
+            "tempo_min": 29,
+            "capacidade": 37
+        },
+        {
+            "origem": "P1",
+            "destino": "E2",
+            "distancia_km": 5.2,
+            "tempo_min": 23,
+            "capacidade": 23
+        },
+        {
+            "origem": "E2",
+            "destino": "P1",
+            "distancia_km": 5.2,
+            "tempo_min": 23,
+            "capacidade": 23
+        },
+        {
+            "origem": "P1",
+            "destino": "R7",
+            "distancia_km": 6.9,
+            "tempo_min": 21,
+            "capacidade": 12
+        },
+        {
+            "origem": "R7",
+            "destino": "P1",
+            "distancia_km": 6.9,
+            "tempo_min": 21,
+            "capacidade": 12
+        },
+        {
+            "origem": "P2",
+            "destino": "R7",
+            "distancia_km": 6.2,
+            "tempo_min": 19,
+            "capacidade": 15
+        },
+        {
+            "origem": "R7",
+            "destino": "P2",
+            "distancia_km": 6.2,
+            "tempo_min": 19,
+            "capacidade": 15
+        },
+        {
+            "origem": "P2",
+            "destino": "E2",
+            "distancia_km": 10.5,
+            "tempo_min": 9,
+            "capacidade": 23
+        },
+        {
+            "origem": "E2",
+            "destino": "P2",
+            "distancia_km": 10.5,
+            "tempo_min": 9,
+            "capacidade": 23
+        },
+        {
+            "origem": "P3",
+            "destino": "P4",
+            "distancia_km": 3.4,
+            "tempo_min": 5,
+            "capacidade": 18
         },
         {
             "origem": "P4",
             "destino": "P3",
-            "distancia_km": 10.9,
-            "tempo_min": 15
+            "distancia_km": 3.4,
+            "tempo_min": 5,
+            "capacidade": 18
+        },
+        {
+            "origem": "P3",
+            "destino": "R1",
+            "distancia_km": 5.0,
+            "tempo_min": 15,
+            "capacidade": 24
+        },
+        {
+            "origem": "R1",
+            "destino": "P3",
+            "distancia_km": 5.0,
+            "tempo_min": 15,
+            "capacidade": 24
+        },
+        {
+            "origem": "P3",
+            "destino": "R5",
+            "distancia_km": 2.0,
+            "tempo_min": 8,
+            "capacidade": 16
+        },
+        {
+            "origem": "R5",
+            "destino": "P3",
+            "distancia_km": 2.0,
+            "tempo_min": 8,
+            "capacidade": 16
         },
         {
             "origem": "P4",
             "destino": "R1",
-            "distancia_km": 11.6,
-            "tempo_min": 10
+            "distancia_km": 9.0,
+            "tempo_min": 14,
+            "capacidade": 25
+        },
+        {
+            "origem": "R1",
+            "destino": "P4",
+            "distancia_km": 9.0,
+            "tempo_min": 14,
+            "capacidade": 25
+        },
+        {
+            "origem": "P4",
+            "destino": "R2",
+            "distancia_km": 11.9,
+            "tempo_min": 8,
+            "capacidade": 16
+        },
+        {
+            "origem": "R2",
+            "destino": "P4",
+            "distancia_km": 11.9,
+            "tempo_min": 8,
+            "capacidade": 16
         },
         {
             "origem": "P5",
-            "destino": "E3",
-            "distancia_km": 3.3,
-            "tempo_min": 29
+            "destino": "P4",
+            "distancia_km": 10.6,
+            "tempo_min": 5,
+            "capacidade": 17
         },
         {
-            "origem": "P5",
-            "destino": "R6",
-            "distancia_km": 3.7,
-            "tempo_min": 18
+            "origem": "P4",
+            "destino": "P5",
+            "distancia_km": 10.6,
+            "tempo_min": 5,
+            "capacidade": 17
         }
     ]
 }

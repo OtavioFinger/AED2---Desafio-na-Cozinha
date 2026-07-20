@@ -88,7 +88,7 @@ arvore = ArvoreB()
 
 # Se o arquivo .dat já existe, carrega do disco
 # Se não, insere todas as receitas e salva
-if arvore.carregarDoDisco("DesafioNaCozinhadata/arvore.dat"):
+if arvore.carregarDoDisco("data/arvore.dat"):
     print("Árvore carregada do disco com sucesso!")
 else:
     for receita in receitas:
