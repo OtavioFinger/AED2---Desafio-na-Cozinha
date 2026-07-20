@@ -1,1 +1,0 @@
-# T2 - Desafio na Cozinha Aprimorado
