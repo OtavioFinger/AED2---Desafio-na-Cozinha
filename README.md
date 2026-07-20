@@ -280,3 +280,21 @@ O arquivo principal foi expandido (sem remover nada do T1) para:
 - Base de receitas (`receita.json`): 56 receitas, reaproveitadas em todos os módulos novos (dependências, menu VIP, comunidades e menu dos namorados).
 
 Ambas as redes atendem ao requisito mínimo de 30 vértices e 50 arestas somando o total de estruturas de grafo utilizadas no trabalho.
+
+### Observações Requisitadas
+
+6. Dimensões das Redes Utilizadas
+O enunciado exige que as redes utilizadas tenham tamanho suficiente para demonstrar de forma consistente o funcionamento dos algoritmos (no mínimo 30 vértices e 50 arestas). A tabela a seguir resume as dimensões efetivamente usadas em cada módulo:
+Rede
+Vértices
+Arestas
+Observação
+Grafo de dependências (Módulo 5)
+65
+60
+55 receitas + 10 preparos-base
+Grafo de logística (Módulo 7)
+16
+66
+8 regiões + 3 estações + 5 pontos de retirada
+Somadas, as duas redes totalizam 81 vértices e 126 arestas. Consideradas isoladamente, o grafo de dependências já ultrapassa o mínimo exigido em ambas as dimensões; o grafo de logística ultrapassa o mínimo de arestas, mas ainda está abaixo do mínimo de vértices — ponto registrado como melhoria futura na seção 8.
