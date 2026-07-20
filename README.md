@@ -31,7 +31,40 @@ O restaurante agora oferece, além dos modos antigos:
 
 # Estruturação dos arquivos 
 
+Abaixo, está descrito toda a árvore de arquivos do projeto, seus usos, bem como relação com cada módulo do código será descrito nas seções de módulos individuais:
 
+
+AED2 - Desafio na Cozinha/
+├── README.md
+├── README - T1.md
+└── DesafioNaCozinha/
+    ├── desafioMain.py
+    ├── testarDisco.py
+    │
+    ├── algorithms/
+    │   ├── bottomUp.py
+    │   ├── comunidades.py
+    │   ├── kahnAlgoritm.py
+    │   ├── menuNamorados.py
+    │   └── mst.py
+    │
+    ├── data/
+    │   ├── arvore.dat
+    │   ├── dependencias.json
+    │   ├── logistica.json
+    │   └── receita.json
+    │
+    ├── models/
+    │   ├── receita.py
+    │   └── recomendacao.py
+    │
+    └── structs/
+        ├── arvoreB.py
+        ├── grafo.py
+        ├── hash.py
+        ├── heap.py
+        ├── trie.py
+        └── uFind.py
 
 
 # Estrutura Central: `structs/grafo.py`
