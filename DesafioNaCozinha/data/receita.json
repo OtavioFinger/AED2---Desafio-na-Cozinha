@@ -67,6 +67,30 @@
         "avaliacao": 4.9,
         "popularidade": 392
     },
+     {
+        "id": 3,
+        "nome": "kabse",
+        "categoria": "Chicken",
+        "ingredientes": [
+            "Chicken",
+            "Rice",
+            "Green Pepper",
+            "Red Pepper",
+            "Mushrooms",
+            "Sweetcorn",
+            "Carrots",
+            "Raisins",
+            "Turmeric",
+            "Kabse Spice",
+            "Salt",
+            "Black Pepper"
+        ],
+        "tempo": 42,
+        "custo": 15.73,
+        "dificuldade": "Média",
+        "avaliacao": 4.9,
+        "popularidade": 392
+    },
     {
         "id": 4,
         "nome": "Asado",
