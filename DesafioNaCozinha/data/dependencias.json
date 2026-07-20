@@ -1,0 +1,344 @@
+{
+    "preparos": [
+        {
+            "id": 100,
+            "nome": "Caldo de Carne Base"
+        },
+        {
+            "id": 101,
+            "nome": "Massa de Torta Pré-assada"
+        },
+        {
+            "id": 102,
+            "nome": "Molho de Tomate Rústico"
+        },
+        {
+            "id": 103,
+            "nome": "Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "id": 104,
+            "nome": "Caldo de Legumes"
+        },
+        {
+            "id": 105,
+            "nome": "Base de Laticínios e Cremes"
+        },
+        {
+            "id": 106,
+            "nome": "Moagem e Mistura de Ervas Pesto"
+        },
+        {
+            "id": 107,
+            "nome": "Desfiamento de Aves"
+        },
+        {
+            "id": 998,
+            "nome": "Preparo Cíclico A"
+        },
+        {
+            "id": 999,
+            "nome": "Preparo Cíclico B"
+        }
+    ],
+    "arestas": [
+        {
+            "origem": 100,
+            "destino": 52,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 20,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 24,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 19,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 12,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 50,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 46,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 100,
+            "destino": 49,
+            "descricao": "Requer Caldo de Carne Base"
+        },
+        {
+            "origem": 101,
+            "destino": 8,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 2,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 16,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 25,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 48,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 27,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 101,
+            "destino": 17,
+            "descricao": "Requer Massa de Torta Pré-assada"
+        },
+        {
+            "origem": 102,
+            "destino": 41,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 44,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 47,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 26,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 9,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 36,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 102,
+            "destino": 4,
+            "descricao": "Requer Molho de Tomate Rústico"
+        },
+        {
+            "origem": 103,
+            "destino": 53,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 51,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 13,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 10,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 46,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 103,
+            "destino": 35,
+            "descricao": "Requer Mirepoix (Cebola, Cenoura, Salsão)"
+        },
+        {
+            "origem": 104,
+            "destino": 22,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 104,
+            "destino": 35,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 104,
+            "destino": 8,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 104,
+            "destino": 46,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 104,
+            "destino": 41,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 104,
+            "destino": 5,
+            "descricao": "Requer Caldo de Legumes"
+        },
+        {
+            "origem": 105,
+            "destino": 27,
+            "descricao": "Requer Base de Laticínios e Cremes"
+        },
+        {
+            "origem": 105,
+            "destino": 6,
+            "descricao": "Requer Base de Laticínios e Cremes"
+        },
+        {
+            "origem": 105,
+            "destino": 33,
+            "descricao": "Requer Base de Laticínios e Cremes"
+        },
+        {
+            "origem": 105,
+            "destino": 31,
+            "descricao": "Requer Base de Laticínios e Cremes"
+        },
+        {
+            "origem": 105,
+            "destino": 41,
+            "descricao": "Requer Base de Laticínios e Cremes"
+        },
+        {
+            "origem": 105,
+            "destino": 39,
+            "descricao": "Requer Base de Laticínios e Cremes"
+        },
+        {
+            "origem": 105,
+            "destino": 10,
+            "descricao": "Requer Base de Laticínios e Cremes"
+        },
+        {
+            "origem": 106,
+            "destino": 53,
+            "descricao": "Requer Moagem e Mistura de Ervas Pesto"
+        },
+        {
+            "origem": 106,
+            "destino": 33,
+            "descricao": "Requer Moagem e Mistura de Ervas Pesto"
+        },
+        {
+            "origem": 106,
+            "destino": 22,
+            "descricao": "Requer Moagem e Mistura de Ervas Pesto"
+        },
+        {
+            "origem": 106,
+            "destino": 2,
+            "descricao": "Requer Moagem e Mistura de Ervas Pesto"
+        },
+        {
+            "origem": 106,
+            "destino": 28,
+            "descricao": "Requer Moagem e Mistura de Ervas Pesto"
+        },
+        {
+            "origem": 106,
+            "destino": 24,
+            "descricao": "Requer Moagem e Mistura de Ervas Pesto"
+        },
+        {
+            "origem": 106,
+            "destino": 37,
+            "descricao": "Requer Moagem e Mistura de Ervas Pesto"
+        },
+        {
+            "origem": 106,
+            "destino": 4,
+            "descricao": "Requer Moagem e Mistura de Ervas Pesto"
+        },
+        {
+            "origem": 107,
+            "destino": 4,
+            "descricao": "Requer Desfiamento de Aves"
+        },
+        {
+            "origem": 107,
+            "destino": 31,
+            "descricao": "Requer Desfiamento de Aves"
+        },
+        {
+            "origem": 107,
+            "destino": 24,
+            "descricao": "Requer Desfiamento de Aves"
+        },
+        {
+            "origem": 107,
+            "destino": 38,
+            "descricao": "Requer Desfiamento de Aves"
+        },
+        {
+            "origem": 107,
+            "destino": 50,
+            "descricao": "Requer Desfiamento de Aves"
+        },
+        {
+            "origem": 107,
+            "destino": 1,
+            "descricao": "Requer Desfiamento de Aves"
+        },
+        {
+            "origem": 107,
+            "destino": 26,
+            "descricao": "Requer Desfiamento de Aves"
+        },
+        {
+            "origem": 12,
+            "destino": 21
+        },
+        {
+            "origem": 42,
+            "destino": 6
+        },
+        {
+            "origem": 998,
+            "destino": 999,
+            "descricao": "Ciclo de Teste A"
+        },
+        {
+            "origem": 999,
+            "destino": 998,
+            "descricao": "Ciclo de Teste B"
+        }
+    ]
+}
