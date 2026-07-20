@@ -110,6 +110,9 @@ Se, ao final, o tamanho da lista `ordem` for menor que o número total de vérti
 
 Para validar essa detecção, o arquivo `dependencias.json` inclui propositalmente dois preparos fictícios ("Preparo Cíclico A" e "Preparo Cíclico B") que dependem um do outro.
 
+**Porque essa estrutura?** Porque BFS/Kahn e não DFS com pilha de recursão para ordenação topológica? Pq o Kahn detecta ciclo de forma mais natural, sem precisar de cores/estado de visita "em progresso", e evita risco de estouro de pilha em grafos maiores.
+
+
 ### Método `buscar_pre_requisitos(receita_alvo)`
 
 Responde à consulta "Quais preparos precisam ser concluídos antes da receita X?". Constrói um **grafo reverso** (invertendo o sentido de todas as arestas) e faz uma busca em largura (BFS) a partir da receita alvo, coletando todos os vértices alcançáveis nesse grafo invertido — ou seja, todos os preparos que, direta ou indiretamente, precisam acontecer antes dela.
@@ -139,6 +142,9 @@ Ao final, `tabela[limite_tempo][limite_raros]` contém a melhor combinação de 
 **Complexidade:** O(N × T × R), onde N é o número de receitas candidatas, T o limite de tempo e R o limite de ingredientes raros — típica de soluções de Programação Dinâmica para o problema da mochila com múltiplas restrições.
 
 ---
+
+**Porque essa estrutura?** Escolhemos pois o Alg. Guloso não garante ótimo global com duas restrições simultâneas; força bruta é exponencial; DP bottom-up resolve em tempo pseudo-polinomial e é o padrão para mochila com múltiplas dimensões.
+
 
 # Módulo 7 — O Pesadelo Logístico (`algorithms/mst.py`, `structs/uFind.py`, `structs/heap.py`)
 
@@ -197,6 +203,9 @@ Implementa o **Algoritmo de Fluxo Máximo (Ford-Fulkerson / Edmonds-Karp)**, usa
 
 ---
 
+**Por que essa estrutura?**: Por que Kruskal e não Prim? Mais simples de implementar com lista de arestas ordenadas, funciona bem com grafos esparsos como o de logística. 
+Por que Dijkstra e não Bellman-Ford? Pesos não-negativos, então Dijkstra é mais eficiente. Por que BFS (Edmonds-Karp) e não DFS puro no Ford-Fulkerson? (garante caminhos aumentantes mais curtos, evitando piores casos de convergência lenta).
+
 # Módulo 8 / Laboratório de Inovação — Comunidades Gastronômicas (`algorithms/comunidades.py`)
 
 **Conteúdo aplicado:** Tópicos Avançados em Grafos — detecção de comunidades/componentes conectados via busca em profundidade (técnica não exigida nos módulos anteriores).
@@ -220,6 +229,8 @@ Esse módulo foi o desafio avançado escolhido pelo grupo dentre as sugestões d
 **Complexidade:** O(N²) para a construção do grafo de similaridade (comparação de ingredientes entre todos os pares de receitas) e O(V + E) para a busca de componentes via DFS.
 
 ---
+
+**Por que essa estrutura?** Por que DFS e não BFS para achar comunidades? Resultado equivalente para componentes conexos, mas DFS recursiva é mais simples de implementar aqui.
 
 # Desafio Extra — Menu Especial Dia dos Namorados (`algorithms/menuNamorados.py`)
 
@@ -252,6 +263,8 @@ Monta a justificativa textual final, recalculando tempo total, custo total, valo
 **Complexidade:** O(E × P × S), onde E, P e S são, respectivamente, o número de entradas, pratos principais e sobremesas cadastrados — já que o algoritmo avalia exaustivamente todas as combinações possíveis entre as três classes.
 
 ---
+
+**Por que essa estrutura?** Por que busca exaustiva de combinações e não uma heurística gulosa? O espaço de combinações é pequeno — poucas dezenas de entradas/principais/sobremesas, então força bruta garante o ótimo sem custo proibitivo; um guloso poderia perder combinações melhores.
 
 # Integração com o `desafioMain.py`
 
